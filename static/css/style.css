@@ -86,6 +86,15 @@ h1, h2, h2,
   transform: scale(1.01);
 }
 
+.social-link {
+  color: var(--light-burgundy);
+}
+
+.social-link:hover {
+  color: var(--dark-burgundy);
+  transform: scale(1.03);
+}
+
 .logo {
   width: 60px;  /* Increase logo size */
   height: auto;  /* Keep aspect ratio */
