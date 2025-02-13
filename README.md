@@ -49,6 +49,7 @@
 
 ## **Credits**
 - [Floating Love Heart Effect](https://codepen.io/1AHV/pen/oPvwQw)
+- [Pulsing Hearts](https://codepen.io/puresick1/pen/popjyG)
 
 ## **Media**
 
