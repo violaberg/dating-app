@@ -73,3 +73,14 @@ h1, h2, h2,
 .team-card:hover {
   transform: scale(1.01);
 }
+
+.logo {
+  width: 60px;  /* Increase logo size */
+  height: auto;  /* Keep aspect ratio */
+}
+
+@media (max-width: 768px) { 
+  .logo {
+      width: 50px;  /* Reduce size on smaller screens */
+  }
+}
