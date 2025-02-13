@@ -16,6 +16,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+SITE_ID = 1
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -50,7 +52,7 @@ INSTALLED_APPS = [
 
     # Custom apps
     'home',
-	'questionnaire.apps.QuestionnaireConfig',
+	'questionnaire',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,32 @@
+:root {
+  --font-montserrat: "Montserrat", serif;
+  --font-great-vibes: "Great Vibes", serif;
+}
+
+body {
+  font-family: var(--font-montserrat);
+}
+
+h1, h2, h2,
+.brand,
+.nav-link {
+  font-family: var(--font-great-vibes);
+}
+
+.brand {
+  font-size: 2.5rem;
+}
+
+.nav-link {
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+}
+
+.nav-link:hover {
+  color: green;
+}
+
+.nav-link.active {
+  color: black !important;
+  font-weight: 700;
+}
