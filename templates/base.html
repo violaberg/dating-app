@@ -31,7 +31,7 @@
             <!-- App Name -->
             <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
                 <img src="{% static 'images/logo.png' %}" alt="SparkSync Logo" class="logo me-2">
-                <span class="fs-4 fw-bold">SparkSync</span>
+                <span class="fs-1 fw-bolder">SparkSync</span>
             </a>            
             
             <!-- Mobile Menu Button -->
@@ -44,25 +44,25 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item px-2">
-                    <a class="btn btn-danger {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="btn btn-danger" href="#">About</a>
+                    <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="btn btn-danger" href="#">Sparky Chat</a>
+                    <a class="nav-link" href="#">Sparky Chat</a>
                 </li>
                 
                 {% if user.is_authenticated %}
                 <li class="nav-item px-2">
-                    <a class="btn btn-danger" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
+                    <a class="btn btn-pink" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item px-2">
-                    <a class="btn btn-danger" href="{% url 'account_login' %}" aria-label="Login">Login</a>
+                    <a class="btn btn-pink" href="{% url 'account_login' %}" aria-label="Login">Login</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a class="btn btn-danger" href="{% url 'account_signup' %}" aria-label="Create Profile">Create Profile</a>
+                    <a class="btn btn-pink" href="{% url 'account_signup' %}" aria-label="Create Profile">Create Profile</a>
                 </li>
                 {% endif %}
                 </ul>
