@@ -10,3 +10,7 @@ def team(request):
 
 def about(request):
     return render(request, "home/about.html")
+
+
+def policy(request):
+    return render(request, "home/policy.html")
