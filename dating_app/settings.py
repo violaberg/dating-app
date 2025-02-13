@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # Custom apps
     'home',
 	'questionnaire',
+    'user_messages',
 ]
 
 MIDDLEWARE = [
