@@ -13,4 +13,4 @@ def about(request):
 
 
 def policy(request):
-    return render(request, "home/policy.html")
+    return render(request, "home/privacy_policy.html")
