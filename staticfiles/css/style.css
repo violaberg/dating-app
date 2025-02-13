@@ -8,17 +8,6 @@
   --light-burgundy: #520408;
 }
 
-html,
-body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
 body {
   background-color: var(--seasalt);
   color: var(--charcoal);
@@ -53,34 +42,13 @@ h1, h2, h2,
   font-size: 1.1rem;
 }
 
-.nav-link:hover,
-.team-link:hover {
+.nav-link:hover {
   color: var(--red);
   font-weight: 500;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .nav-link.active {
   color: var(--red)!important;
   font-weight: 700;
-}
-
-.team-link {
-  color: var(--seasalt);
-}
-
-/* Team Page */
-.team-card:hover {
-  transform: scale(1.01);
-}
-
-.logo {
-  width: 60px;  /* Increase logo size */
-  height: auto;  /* Keep aspect ratio */
-}
-
-@media (max-width: 768px) { 
-  .logo {
-      width: 50px;  /* Reduce size on smaller screens */
-  }
 }
