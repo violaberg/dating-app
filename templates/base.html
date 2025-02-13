@@ -7,24 +7,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}A Dating App{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>A Dating App</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+        <div class="container">
+            <!-- App Name -->
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">A Dating App</a>
+
+            <!-- Mobile Menu Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Create Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Sparky Chat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-5 pt-5">
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="text-center py-3 bg-danger text-white mt-5">
         <p>© 2502-hackathon-team4</p>
     </footer>
+
 </body>
 </html>
