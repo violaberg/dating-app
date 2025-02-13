@@ -12,7 +12,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
         <div class="container">
             <!-- App Name -->
-            <a class="navbar-brand fw-bold" href="{% url 'home' %}">SparkSync</a>
+            <a class="brand navbar-brand" href="{% url 'home' %}">SparkSync</a>
 
             <!-- Mobile Menu Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -43,9 +43,6 @@
                         <a class="nav-link {% if request.path == '#' %}active{% endif %} text-white" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '#' %}active{% endif %} text-white" href="#">Create Profile</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link {% if request.path == '#' %}active{% endif %} text-white" href="#">Sparky Chat</a>
                     </li>
                     {% if user.is_authenticated %}
@@ -54,10 +51,10 @@
                     </li>
                     {% else %}
                     <li class="nav-item px-2">
-                        <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %} text-white" href="{% url 'account_signup' %}" aria-label="Create Profile">Create Profile</a>
+                        <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %} text-white" href="{% url 'account_login' %}" aria-label="Login">Login</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %} text-white" href="{% url 'account_login' %}" aria-label="Login">Login</a>
+                        <a class="btn-dark btn  {% if request.path == signup_url %}active" aria-current="page{% endif %} text-white" href="{% url 'account_signup' %}" aria-label="Create Profile">Create Profile</a>
                     </li>
                     {% endif %}
                 </ul>
