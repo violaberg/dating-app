@@ -68,3 +68,8 @@ h1, h2, h2,
 .team-link {
   color: var(--seasalt);
 }
+
+/* Team Page */
+.team-card:hover {
+  transform: scale(1.01);
+}
