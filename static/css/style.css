@@ -52,13 +52,13 @@ h1, h2, h2,
 
 .nav-link:hover,
 .team-link:hover {
-  color: var(--red);
+  color: var(--pink);
   font-weight: 500;
   transform: scale(1.2);
 }
 
 .nav-link.active {
-  color: var(--red)!important;
+  color: var(--pink)!important;
   font-weight: 700;
 }
 
