@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +29,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
         <div class="container">
             <!-- App Name -->
-            <a class="navbar-brand" href="{% url 'home' %}">SparkSync</a>
-
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="SparkSync Logo" class="logo me-2">
+                <span class="fs-4 fw-bold">SparkSync</span>
+            </a>            
+            
             <!-- Mobile Menu Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
