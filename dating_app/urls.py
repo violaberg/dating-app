@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),  # path for home page
 	path('questionnaire/', include('questionnaire.urls')),  # path for questionnaire page
+    path('messages/', include('user_messages.urls')),  # path for messages page
 ]
