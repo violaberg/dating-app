@@ -36,27 +36,29 @@
             <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/' %}active{% endif %} text-white" href="{% url 'home' %}">Home</a>
+                    <li class="nav-item px-2">
+                        <a class="btn btn-danger {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '#' %}active{% endif %} text-white" href="#">About</a>
+                    <li class="nav-item px-2">
+                        <a class="btn btn-danger {% if request.path == '#' %}active{% endif %}" href="#">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '#' %}active{% endif %} text-white" href="#">Sparky Chat</a>
+                    <li class="nav-item px-2">
+                        <a class="btn btn-danger {% if request.path == '#' %}active{% endif %}" href="#">Sparky Chat</a>
                     </li>
+                    
                     {% if user.is_authenticated %}
                     <li class="nav-item px-2">
-                        <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %} text-white" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
+                        <a class="btn btn-danger {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item px-2">
-                        <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %} text-white" href="{% url 'account_login' %}" aria-label="Login">Login</a>
+                        <a class="btn btn-danger {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}" aria-label="Login">Login</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="btn-dark btn  {% if request.path == signup_url %}active" aria-current="page{% endif %} text-white" href="{% url 'account_signup' %}" aria-label="Create Profile">Create Profile</a>
+                        <a class="btn btn-danger {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}" aria-label="Create Profile">Create Profile</a>
                     </li>
-                    {% endif %}
+                    {% endif %}                                    
+                    
                 </ul>
             </div>
         </div>
