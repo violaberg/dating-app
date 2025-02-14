@@ -1,11 +1,14 @@
 asgiref==3.8.1
+dj-database-url==2.3.0
 Django==5.1.6
 django-allauth==65.4.1
 django-dotenv==1.4.2
 gunicorn==23.0.0
 packaging==24.2
 pillow==11.1.0
+psycopg2-binary==2.9.10
 python-dotenv==1.0.1
 sqlparse==0.5.3
+typing_extensions==4.12.2
 tzdata==2025.1
 whitenoise==6.9.0
