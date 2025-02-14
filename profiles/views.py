@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from .forms import ProfileForm
 from django.contrib.auth import logout
 from django.contrib import messages
+
 
 @login_required
 def view_or_edit_profile(request):
@@ -22,6 +23,7 @@ def view_or_edit_profile(request):
         form = ProfileForm(instance=profile)
 
     return render(request, 'profiles/profile.html', {'profile': profile, 'form': form, 'edit_mode': edit_mode, 'new_user': created})
+
 
 @login_required
 def delete_profile(request):
@@ -45,11 +47,40 @@ def delete_profile(request):
     
     return redirect('profile')
 
+
 @login_required
 def matching_profiles(request):
     """ Display all matching profiles """
     profiles = Profile.objects.all()
     return render(request, 'profiles/matching_profiles.html', {'profiles': profiles})
+
+
+@login_required
+def like_profile(request, profile_id):
+    """
+    Likes/unlikes a profile
+    """
+    if request.POST and 'profile_id' in request.POST:
+        if 'fa-regular' in request.POST['icon_classlist_value']:
+            try:
+                messages.success(request, 'You liked this profile')
+            except Exception:
+                messages.error(
+                    request, 'Sorry, an error occurred.Please try again later')
+        elif 'fa-solid' in request.POST['icon_classlist_value']:
+            try:
+                messages.success(
+                    request, 'You unliked this profile')
+            except Exception:
+                messages.error(
+                    request, 'Sorry, an error occurred. Please try again')
+    else:
+        messages.error(
+            request,
+            'Sorry, something went wrong with bookmarking. Try again')
+
+    return redirect(reverse('matching_profiles'))
+
 
 @login_required
 def delete_profile(request):
