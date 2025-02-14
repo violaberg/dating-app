@@ -87,7 +87,7 @@
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
     </ul>
     {% endif %}
@@ -102,8 +102,10 @@
         <div class="container text-center">
         <span class="fs-5 mb-1">&copy; SparkSync</span>
         <p class="pb-2">All rights reserved</p>
-        <a class="btn btn-pink rounded mt-2 fs-6 text-decoration-none" href="{% url 'contact' %}"
+        <a class="btn btn-pink rounded mt-2 mx-2 fs-6 text-decoration-none" href="{% url 'contact' %}"
         aria-label="Brings to Contact Page">Contact Us</a>
+        <a class="btn btn-pink rounded mt-2 fs-6 text-decoration-none" href="{% url 'faq' %}"
+        aria-label="Brings to FAQ Page">FAQ</a>
         <a class="btn btn-pink rounded mt-2 mx-2 fs-6 text-decoration-none" href="{% url 'team' %}"
         aria-label="Brings to Team Page">Meet the Team</a>
         <a class="btn btn-pink rounded mt-2 fs-6 text-decoration-none" href="{% url 'policy' %}"
