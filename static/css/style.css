@@ -61,3 +61,8 @@ h1, h2, h2,
   color: var(--pink)!important;
   font-weight: 700;
 }
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
