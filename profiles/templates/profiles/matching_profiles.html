@@ -9,6 +9,18 @@
         </div>
     </div>
 
+
+    <!-- Notifications based on this article: https://medium.com/star-gazers/how-to-add-notifications-to-django-app-74df1dac984e -->
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        {% for notification in user.notifications.unread %}
+            <div>
+            Message from <b>{{ notification.actor }}</b>
+                <button class="dropdown-item" type="button">{{ notification.description }}</button>			
+            </div>
+            <div class="dropdown-divider"></div>
+        {% endfor %}
+    </div>
+
     <div class="row">
         <div class="product-container">
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
@@ -64,7 +76,7 @@
                 $.ajax({
                     url: action_url,
                     type: 'POST',
-                    data: {'attr_id': profile_id, 'icon_classlist_value': icon_classlist_value },
+                    data: {'profile_id': profile_id, 'icon_classlist_value': icon_classlist_value },
                     headers : {'X-CSRFToken': csrftoken},
                     success: function (result) {
                         if (icon[0].classList.contains('fa-regular')) {
