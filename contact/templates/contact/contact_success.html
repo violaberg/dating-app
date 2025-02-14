@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us Success{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-10 col-xl-8 text-center mx-auto">
+        </div>
+    </div>
+    <div class="text-center container mt-4">
+        <h1>Your form has been sent successfully</h1>
+        <p>Thank you for taking the first step into this beautiful journey! We will
+            get back to you as soon as possible.</p>
+        <a href="{% url 'home' %}" class="btn btn-pink btn border rounded"
+            aria-label="Brings back to home page">Back to Home page</a>
+    </div>
+</div>
+{% endblock content %}
