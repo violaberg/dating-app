@@ -4,7 +4,7 @@ from .models import Profile
 from .forms import ProfileForm
 from django.contrib.auth import logout
 from django.contrib import messages
-from notifications.signals import notify
+#from notifications.signals import notify
 from django.contrib.auth.models import User
 
 
