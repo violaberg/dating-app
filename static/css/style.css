@@ -39,8 +39,7 @@ footer {
 }
 
 h1, h2, h2,
-.navbar-brand,
-.nav-link {
+.navbar-brand {
   font-family: var(--font-great-vibes);
 }
 
@@ -62,7 +61,100 @@ h1, h2, h2,
   font-weight: 700;
 }
 
-.logo {
-  width: 50px;
+.team-link {
+  color: var(--seasalt);
+}
+
+/* Buttons */
+.btn-pink {
+  background-color: var(--pink);
+  color: var(--charcoal);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.btn-pink:hover {
+  background-color: var(--pink);
+  transform: scale(1.02);
+}
+
+/* Team Page */
+.team-card {
+  border: 1px solid var(--light-burgundy);
+}
+
+.team-card:hover {
+  transform: scale(1.01);
+}
+
+.social-link {
+  color: var(--light-burgundy);
+}
+
+.social-link:hover {
+  color: var(--dark-burgundy);
+  transform: scale(1.03);
+}
+
+.wrapper {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 10px;
+  animation: pulse 1s infinite;
+}
+
+
+.pulsingheart {
+  position: relative;
+  width: 60px;
   height: 50px;
 }
+
+.pulsingheart:before,
+.pulsingheart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: var(--light-burgundy);
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  animation: pulsecolor 1s infinite;
+}
+
+.pulsingheart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+  animation: pulsecolor 1s infinite;
+}
+
+@keyframes pulse {
+  10% {
+    transform: scale(1.1)
+  }
+}
+
+@keyframes pulsecolor {
+  10% {
+    background: var(--dark-burgundy)
+  }
+}
+
+.logo {
+  width: 60px;
+  /* Increase logo size */
+  height: auto;
+  /* Keep aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 50px;
+    /* Reduce size on smaller screens */
+  }
+}
+
