@@ -44,3 +44,31 @@ def delete_profile(request):
         return redirect('profile')
     
     return redirect('profile')
+
+@login_required
+def matching_profiles(request):
+    """ Display all matching profiles """
+    profiles = Profile.objects.all()
+    return render(request, 'profiles/matching_profiles.html', {'profiles': profiles})
+
+@login_required
+def delete_profile(request):
+    if request.method == 'POST':
+        profile = request.user.profile
+        # Delete profile image if it exists
+        if profile.profile_image:
+            profile.profile_image.delete()
+        
+        # Reset profile fields
+        profile.bio = ''
+        profile.gender = ''
+        profile.age = None
+        profile.location = ''
+        profile.interests = ''
+        profile.relationship_goal = ''
+        profile.save()
+        
+        messages.success(request, 'Your profile has been deleted successfully.')
+        return redirect('profile')
+    
+    return redirect('profile')
