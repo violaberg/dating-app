@@ -38,7 +38,9 @@ footer {
   color: var(--seasalt);
 }
 
-h1, h2, h2,
+h1,
+h2,
+h2,
 .navbar-brand {
   font-family: var(--font-great-vibes);
 }
@@ -57,7 +59,7 @@ h1, h2, h2,
 }
 
 .nav-link.active {
-  color: var(--pink)!important;
+  color: var(--pink) !important;
   font-weight: 700;
 }
 
@@ -151,10 +153,16 @@ h1, h2, h2,
   /* Keep aspect ratio */
 }
 
+.text-glow {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .logo {
     width: 50px;
     /* Reduce size on smaller screens */
   }
 }
-
