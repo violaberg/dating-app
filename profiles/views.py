@@ -20,3 +20,10 @@ def view_or_edit_profile(request):
         form = ProfileForm(instance=profile)
 
     return render(request, 'profiles/profile.html', {'profile': profile, 'form': form, 'edit_mode': edit_mode, 'new_user': created})
+
+
+@login_required
+def matching_profiles(request):
+    """ Display all matching profiles """
+    profiles = Profile.objects.all()
+    return render(request, 'profiles/matching_profiles.html', {'profiles': profiles})
