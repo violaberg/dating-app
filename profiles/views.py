@@ -4,6 +4,8 @@ from .models import Profile
 from .forms import ProfileForm
 from django.contrib.auth import logout
 from django.contrib import messages
+from notifications.signals import notify
+from django.contrib.auth.models import User
 
 
 @login_required
@@ -64,9 +66,15 @@ def like_profile(request, profile_id):
         if 'fa-regular' in request.POST['icon_classlist_value']:
             try:
                 messages.success(request, 'You liked this profile')
+                sender = User.objects.get(username=request.user)
+                recipient = User.objects.get(profile=profile_id)
+                message = f"{sender} just liked your profile"
+                notify.send(actor=sender, recipient=recipient, verb='Message', description=message)
+                print('User notified about the like')
+                messages.success(request, 'The user has been notified')
             except Exception:
                 messages.error(
-                    request, 'Sorry, an error occurred.Please try again later')
+                    request, 'Sorry, an error occurred. Please try again later')
         elif 'fa-solid' in request.POST['icon_classlist_value']:
             try:
                 messages.success(
