@@ -25,7 +25,7 @@
 ### **Intro** 
 
 ### **Deployment**   
-[Deployed link]()
+[Deployed link](https://sparksync-7438f8dc8240.herokuapp.com/)
 
 [Kanban board](https://github.com/users/violaberg/projects/12)
 
