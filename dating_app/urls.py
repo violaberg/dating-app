@@ -30,4 +30,5 @@ urlpatterns = [
     path('', include('home.urls')),  # path for home page
 	path('questionnaire/', include('questionnaire.urls')),  # path for questionnaire page
     path('messages/', include('user_messages.urls')),  # path for messages page
+    path('profiles/', include('profiles.urls')),  # path for profiles page
 ]
