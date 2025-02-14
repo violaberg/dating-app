@@ -83,6 +83,15 @@
         </div>
     </nav>
 
+    <!-- Next 7 lines copied from https://www.brntn.me/blog/how-i-use-djangos-messages-framework/ -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <!-- Main Content -->
     <main class="container flex-grow-1 mt-5 pt-5">
         {% block content %}{% endblock %}
