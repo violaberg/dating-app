@@ -51,9 +51,11 @@
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link" href="#">Sparky Chat</a>
-                </li>
-                
+                </li> 
                 {% if user.is_authenticated %}
+                <li class="nav-item px-2">
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                </li>
                 <li class="nav-item px-2">
                     <a class="btn btn-pink" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
                 </li>
