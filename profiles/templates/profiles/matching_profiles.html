@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center mt-4 mb-3">
+            <h4>Find your match</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="product-container">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+                {% for profile in profiles %}
+                <div class="col mb-3">
+                    <div class="card h-100 border-1">
+
+                        {% if request.user.is_authenticated %}
+                        <button class="favourite-profile text-end pe-1 pt-1" data-profile-item="{{ profile.id }}" aria-label="Like the profile">
+                            <i class="fa-regular fa-heart h5"></i>
+                        </button>
+                        {% endif %}
+                        
+                        {% if profile.profile_image %}
+                        <div class="px-1 card-img-top h-100">
+                            <img class="img-fluid" src="{{ profile.profile_image.url }}" alt="{{ profile.user }}">
+                        </div> 
+                        {% else %}
+                        <div>
+                            <p>No image</p>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="card-body p-2 pb-0">
+                            <p class="mb-0">
+                                {{ profile.user }}
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+    {% if user.is_authenticated %}
+    <!-- Like profiles -->
+    <script src="{% static 'profiles/js/like_profile.js' %}"></script>
+    {% endif %}
+{% endblock %}
