@@ -105,7 +105,6 @@ h2,
   animation: pulse 1s infinite;
 }
 
-
 .pulsingheart {
   position: relative;
   width: 60px;
@@ -154,10 +153,19 @@ h2,
 }
 
 .text-glow {
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa;
-  color: white;
-  font-size: 30px;
+  text-shadow: 0 0 1px #ffffff77, 0 0 3px #ffffff75, 0 0 5px rgba(255, 226, 228, 0.514), 0 0 6px rgba(255, 226, 228, 0.473), 0 0 8px rgba(255, 226, 228, 0.562);
   text-align: center;
+}
+
+#profile-message-box {
+  background-color: var(--seasalt);
+  border: 1px solid var(--light-burgundy);
+  color: var(--charcoal);
+  display: none;
+  position: fixed;
+  right: 1rem;
+  top: 7rem;
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
