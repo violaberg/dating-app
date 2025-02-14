@@ -6,6 +6,18 @@
   --red: #B10009;
   --dark-burgundy: #2D0709;
   --light-burgundy: #520408;
+  --pink: #fa9ca1;
+}
+
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 body {
@@ -27,13 +39,9 @@ footer {
 }
 
 h1, h2, h2,
-.brand,
+.navbar-brand,
 .nav-link {
   font-family: var(--font-great-vibes);
-}
-
-.brand {
-  font-size: 2.5rem;
 }
 
 .nav-link {
@@ -42,24 +50,14 @@ h1, h2, h2,
   font-size: 1.1rem;
 }
 
-.nav-link:hover {
-  color: var(--red);
+.nav-link:hover,
+.team-link:hover {
+  color: var(--pink);
   font-weight: 500;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .nav-link.active {
-  color: var(--red)!important;
+  color: var(--pink)!important;
   font-weight: 700;
-}
-
-.logo {
-  width: 70px;  /* Increase logo size */
-  height: auto;  /* Keep aspect ratio */
-}
-
-@media (max-width: 768px) { 
-  .logo {
-      width: 50px;  /* Reduce size on smaller screens */
-  }
 }

@@ -1,5 +1,66 @@
-{% comment %} {% extends base.html %} {% endcomment %}
+{% extends "base.html" %}
 
 {% block content %}
-<h2> Questionnaire </h2>
+<h2>Questionnaire</h2>
+
+<!-- Display success message if it exists -->
+{% if success_message %}
+    <div class="alert alert-success" role="alert">
+        {{ success_message }}
+    </div>
+{% endif %}
+
+<!-- Questionnaire form -->
+<form method="POST">
+    {% csrf_token %}
+
+    <!-- Loop through all questions -->
+    {% for question in questions %}
+        <div class="mb-4">
+            <h4>{{ question.question_text }}</h4>
+
+            <!-- Display answers based on question type -->
+            {% if question.question_type == "single" %}
+                <!-- Single Choice -->
+                {% for answer in question.answer_set.all %}
+                    <div>
+                        <input
+                            type="radio"
+                            name="question_{{ question.id }}"
+                            value="{{ answer.id }}"
+                            id="answer_{{ answer.id }}"
+                        >
+                        <label for="answer_{{ answer.id }}">{{ answer.answer_text }}</label>
+                    </div>
+                {% endfor %}
+
+            {% elif question.question_type == "multiple" %}
+                <!-- Multiple Choice -->
+                {% for answer in question.answer_set.all %}
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="question_{{ question.id }}"
+                            value="{{ answer.id }}"
+                            id="answer_{{ answer.id }}"
+                        >
+                        <label for="answer_{{ answer.id }}">{{ answer.answer_text }}</label>
+                    </div>
+                {% endfor %}
+
+            {% elif question.question_type == "text" %}
+                <!-- Text Input -->
+                <textarea
+                    name="question_{{ question.id }}"
+                    rows="3"
+                    cols="40"
+                    placeholder="Type your response here..."
+                ></textarea>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 {% endblock %}

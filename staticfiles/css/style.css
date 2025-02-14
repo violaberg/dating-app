@@ -1,0 +1,54 @@
+:root {
+  --font-montserrat: "Montserrat", serif;
+  --font-great-vibes: "Great Vibes", serif;
+  --seasalt: #fafafa;
+  --charcoal: #1b1b1b;
+  --red: #B10009;
+  --dark-burgundy: #2D0709;
+  --light-burgundy: #520408;
+}
+
+body {
+  background-color: var(--seasalt);
+  color: var(--charcoal);
+  font-family: var(--font-montserrat);
+}
+
+h1,
+h2,
+h2 {
+  color: var(--light-burgundy);
+}
+
+.navbar,
+footer {
+  background-color: var(--dark-burgundy);
+  color: var(--seasalt);
+}
+
+h1, h2, h2,
+.navbar-brand,
+.nav-link {
+  font-family: var(--font-great-vibes);
+}
+
+.navbar-brand {
+  font-size: 2.5rem;
+}
+
+.nav-link {
+  color: var(--seasalt);
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+}
+
+.nav-link:hover {
+  color: var(--red);
+  font-weight: 500;
+  transform: scale(1.1);
+}
+
+.nav-link.active {
+  color: var(--red)!important;
+  font-weight: 700;
+}
