@@ -25,6 +25,9 @@ class Profile(models.Model):
     interests = models.TextField(blank=True, null=True, help_text="List your hobbies and interests.")
     relationship_goal = models.CharField(max_length=20, choices=RELATIONSHIP_GOALS, default='unsure')
     profile_image = models.ImageField(upload_to='profile_pics/', default='profile_pics/default.jpg')
+    gender_preference = models.CharField(max_length=50, blank=True, null=True)
+    spark_type = models.CharField(max_length=50, blank=True, null=True)
+    age_preference = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return f"{self.user.username}'s Profile"

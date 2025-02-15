@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %} 
+{% load static %}
 {% block content %}
 {% if messages %}
     <div class="container mt-3">
@@ -23,7 +23,7 @@
             <p>Edit your details below.</p>
         </div>
     {% endif %}
-    
+
     {% if new_user or not profile.bio or edit_mode %}
     <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
         <form method="POST" enctype="multipart/form-data">
@@ -91,6 +91,9 @@
                     <li class="list-group-item"><strong>Location:</strong> {{ profile.location }}</li>
                     <li class="list-group-item"><strong>Interests:</strong> {{ profile.interests }}</li>
                     <li class="list-group-item"><strong>Looking for:</strong> {{ profile.get_relationship_goal_display }}</li>
+                    <li class="list-group-item"><strong>Age Preference:</strong> {{ profile.age_preference }}</li>
+                    <li class="list-group-item"><strong>Spark Type:</strong> {{ profile.spark_type }}</li>
+                    <li class="list-group-item"><strong>Gender Preference:</strong> {{ profile.gender_preference }}</li>
                 </ul>
 
                 <div class="text-center mt-3">

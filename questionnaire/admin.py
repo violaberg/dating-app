@@ -14,7 +14,7 @@ class QuestionCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('question_text', 'category', 'question_type')
+    list_display = ('id', 'question_text', 'category', 'question_type')
     list_filter = ('category', 'question_type')
     search_fields = ('question_text',)
     inlines = [AnswerInline]
