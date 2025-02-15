@@ -212,6 +212,12 @@ label {
   color: var(--light-burgundy);
 }
 
+/* Add margin so that h1 element of Login and Sign Up page appears fully */
+body .container h1:first-of-type {
+  margin-top: 50px; 
+}
+
+
 @media (max-width: 768px) {
   .logo {
     width: 50px;
