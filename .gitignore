@@ -8,6 +8,7 @@ __pycache__/
 node_modules/
 .github/
 cloudinary_python.txt
+db_backup.sql
 
 # VS Code files for those working on multiple tools
 .vscode/
