@@ -36,6 +36,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     # Custom apps
     'home',
 	'questionnaire.apps.QuestionnaireConfig',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -84,7 +87,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'dating_app.wsgi.application'
+ASGI_APPLICATION = 'dating_app.asgi.application'
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

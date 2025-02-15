@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),  # path for home page
 	path('questionnaire/', include('questionnaire.urls')),  # path for questionnaire page
+    path("chat/", include("chat.urls")),  # path for instant chat pages
 ]
