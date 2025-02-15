@@ -212,6 +212,31 @@ label {
   color: var(--light-burgundy);
 }
 
+/* Allauth */
+.allauth-link {
+  color: var(--light-burgundy)!important;
+}
+
+.allauth-link:hover {
+  color: var(--dark-burgundy) !important;
+}
+
+a[href*="password/reset"] {
+  color: var(--light-burgundy);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a[href*="password/reset"]:hover {
+  color: var(--dark-burgundy);
+  text-decoration: underline;
+}
+
+li {
+  list-style-type: none !important;
+}
+
 /* Add margin so that h1 element of Login and Sign Up page appears fully */
 body .container h1:first-of-type {
   margin-top: 50px; 

@@ -1,45 +1,45 @@
 {% extends "base.html" %}
 {% load allauth i18n %}
+{% load crispy_forms_tags %}
+{% load static %}
+
 {% block head_title %}
     {% trans "Signup" %}
 {% endblock head_title %}
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    {% setvar link %}
-        <a href="{{ login_url }}">
-        {% endsetvar %}
-        {% setvar end_link %}
-        </a>
-    {% endsetvar %}
-    {% element p %}
-        {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
-    {% endelement %}
-    {% if not SOCIALACCOUNT_ONLY %}
-        {% url 'account_signup' as action_url %}
-        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-            {% slot body %}
-                {% csrf_token %}
-                {% element fields form=form unlabeled=True %}
-                {% endelement %}
-                {{ redirect_field }}
-            {% endslot %}
-            {% slot actions %}
-                {% element button tags="prominent,signup" type="submit" %}
-                    {% trans "Sign Up" %}
-                {% endelement %}
-            {% endslot %}
-        {% endelement %}
-    {% endif %}
-    {% if PASSKEY_SIGNUP_ENABLED %}
-        {% element hr %}
-        {% endelement %}
-        {% element button href=signup_by_passkey_url tags="prominent,signup,outline,primary" %}
-            {% trans "Sign up using a passkey" %}
-        {% endelement %}
-    {% endif %}
-    {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-10 col-xl-8 text-center pb-4 mx-auto">
+            <header class="mt-4">
+                <h1>{% trans "Create Profile" %}</h1>
+            </header>
+            <p class="mt-3">
+                {% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}" class="allauth-link text-decoration-none fw-semibold">log in</a>.{% endblocktranslate %}
+            </p>
+            
+            {% if not SOCIALACCOUNT_ONLY %}
+                {% url 'account_signup' as action_url %}
+                <form method="post" action="{{ action_url }}" class="shadow p-3 border rounded">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    {{ redirect_field }}
+                    <button type="submit" class="btn btn-pink mt-3" aria-label="Sign up button">
+                        {% trans "Sign Up" %}
+                    </button>
+                </form>
+            {% endif %}
+
+            {% if PASSKEY_SIGNUP_ENABLED %}
+                <hr class="mt-4">
+                <a href="{{ signup_by_passkey_url }}" class="btn btn-outline-primary mt-2">
+                    {% trans "Sign up using a passkey" %}
+                </a>
+            {% endif %}
+
+            {% if SOCIALACCOUNT_ENABLED %}
+                {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock content %}
