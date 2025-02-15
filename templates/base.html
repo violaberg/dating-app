@@ -59,7 +59,7 @@
                         <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link {% if request.path == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
+                        <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a>
                     </li>
                     <li class="nav-item px-2">
                         <a class="nav-link {% if request.path == '#' %}active{% endif %}" href="#">Sparky Chat</a>
@@ -67,7 +67,7 @@
                     
                     {% if user.is_authenticated %}
                     <li class="nav-item px-2">
-                        <a class="nav-link {% if request.path == 'profiles:profile' %}active{% endif %}" href="{% url 'profiles:profile' %}" aria-label="Profile">Profile</a>
+                        <a class="btn btn-pink {% if request.path == 'profiles:profile' %}active{% endif %}" href="{% url 'profiles:profile' %}" aria-label="Profile">Profile</a>
                     </li>
                     <li class="nav-item px-2">
                         <a class="btn btn-pink" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
