@@ -23,24 +23,31 @@ def view_or_edit_profile(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, "Your profile details have been updated successfully!")
-            return redirect('profiles:profile')  # Redirect to profile after saving
-        else:
-            messages.error(request, "Something went wrong. Please check your inputs.")
+            messages.success(
+                request, "Your profile details have been updated successfully!"
+            )
+            return redirect('profiles:profile')
+        messages.error(request, "Something went wrong. Please check your inputs.")
     else:
         form = ProfileForm(instance=profile)
 
-    return render(request, 'profiles/profile.html', {'profile': profile, 'form': form, 'edit_mode': edit_mode, 'new_user': created})
+    return render(
+        request, 'profiles/profile.html', {
+            'profile': profile, 'form': form,
+            'edit_mode': edit_mode, 'new_user': created
+        }
+    )
 
 
 @login_required
 def delete_profile(request):
+    """ Deletes user profile but keeps account active """
     if request.method == 'POST':
         profile = request.user.profile
         # Delete profile image if it exists
         if profile.profile_image:
             profile.profile_image.delete()
-        
+
         # Reset profile fields
         profile.bio = ''
         profile.gender = ''
@@ -49,22 +56,25 @@ def delete_profile(request):
         profile.interests = ''
         profile.relationship_goal = ''
         profile.save()
-        
+
         messages.success(request, 'Your profile has been deleted successfully.')
         return redirect('profiles:profile')
-    
-    return redirect('profiles:profike')
+
+    return redirect('profiles:profile')
 
 
 @login_required
 def matching_profiles(request):
     """ Display all matching profiles """
     profiles = Profile.objects.all()
-    return render(request, 'profiles/matching_profiles.html', {'profiles': profiles})
+    return render(
+        request, 'profiles/matching_profiles.html', {'profiles': profiles}
+    )
 
 
 @login_required
 def like_profile(request, profile_id):
+    """ Handles liking/unliking a profile """
     if request.method == "POST":
         icon_class = request.POST.get("icon_classlist_value", "")
 
@@ -74,21 +84,33 @@ def like_profile(request, profile_id):
             recipient = recipient_profile.user  
 
             liked = "fa-regular" in icon_class  # Toggle based on current state
-            message = "You liked this profile ❤️" if liked else "You unliked this profile 💔"
+            message = (
+                "You liked this profile ❤️"
+                if liked else "You unliked this profile 💔"
+            )
 
             response_data = {
                 "success": True,
                 "liked": liked,
                 "message": message
             }
-            print("Server Response:", json.dumps(response_data, indent=4))  # Debugging
+            print(
+                "Server Response:",
+                json.dumps(response_data, indent=4)  # Debugging
+            )
             return JsonResponse(response_data)
 
         except Profile.DoesNotExist:
-            return JsonResponse({"success": False, "message": "Profile not found"}, status=404)
+            return JsonResponse(
+                {"success": False, "message": "Profile not found"}, status=404
+            )
 
         except Exception as e:
-            return JsonResponse({"success": False, "message": str(e)}, status=400)
+            return JsonResponse(
+                {"success": False, "message": str(e)}, status=400
+            )
 
     return JsonResponse({"success": False, "message": "Invalid request"}, status=400)
+
+
 
