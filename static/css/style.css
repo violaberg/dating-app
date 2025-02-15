@@ -221,6 +221,18 @@ label {
   color: var(--dark-burgundy) !important;
 }
 
+a[href*="password/reset"] {
+  color: var(--light-burgundy);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a[href*="password/reset"]:hover {
+  color: var(--dark-burgundy);
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .logo {
     width: 50px;
