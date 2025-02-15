@@ -50,6 +50,7 @@ cffi==1.17.1
 charset-normalizer==3.4.1
 distlib==0.3.9
 filelock==3.17.0
+gunicorn==23.0.0
 idna==3.10
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
