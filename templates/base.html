@@ -67,6 +67,9 @@
                     
                     {% if user.is_authenticated %}
                     <li class="nav-item px-2">
+                        <a class="nav-link {% if request.path == 'profiles:profile' %}active{% endif %}" href="{% url 'profiles:profile' %}" aria-label="Profile">Profile</a>
+                    </li>
+                    <li class="nav-item px-2">
                         <a class="btn btn-pink" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
                     </li>
                     {% else %}

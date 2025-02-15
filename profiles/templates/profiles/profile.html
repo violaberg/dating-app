@@ -1,14 +1,20 @@
 {% extends "base.html" %}
+{% load static %} 
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center">My Profile</h1>
 
+    {% if new_user or not profile.bio %}
+        <div class="alert alert-info text-center">
+            <p>You haven't set up your profile yet. Please fill in your details below.</p>
+        </div>
+    {% elif edit_mode %}
+        <div class="alert alert-info text-center">
+            <p>Edit your details below.</p>
+        </div>
+    {% endif %}
+    
     {% if new_user or not profile.bio or edit_mode %}
-    <div class="alert alert-info text-center">
-        <p>{% if new_user or not profile.bio %}You haven't set up your profile yet. Please fill in your details below.{%
-            else %}Edit your details below.{% endif %}</p>
-    </div>
-
     <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -60,8 +66,11 @@
         <div class="col-md-6 col-lg-4">
             <div class="card mx-auto shadow p-4">
                 <div class="text-center">
-                    <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3"
-                        alt="Profile Picture">
+                    {% if profile.profile_image and profile.profile_image.url != "/media/profile_pics/default.jpg" %}
+                        <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Profile Picture">
+                    {% else %}
+                        <img src="{% static 'images/profile_placeholder.png' %}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
+                    {% endif %}
                 </div>
                 <h2 class="fs-4 text-center">{{ profile.user.username }}</h2>
 
@@ -75,7 +84,7 @@
                 </ul>
 
                 <div class="text-center mt-3">
-                    <a href="{% url 'profile' %}?edit=true" class="btn btn-primary">Edit Profile</a>
+                    <a href="{% url 'profiles:profile' %}?edit=true" class="btn btn-primary">Edit Profile</a>
                 </div>
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal"
@@ -110,7 +119,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <form method="POST" action="{% url 'delete_profile' %}" id="deleteAccountForm">
+                                <form method="POST" action="{% url 'profiles:delete_profile' %}" id="deleteAccountForm">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-danger" id="confirmDeleteBtn" disabled>Delete
                                         Account</button>
