@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center mt-4 mb-3">
+            <h1>Find your match</h1>
+        </div>
+    </div>
+
+    <!-- Notifications based on this article: https://medium.com/star-gazers/how-to-add-notifications-to-django-app-74df1dac984e -->
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        {% for notification in user.notifications.unread %}
+            <div>
+            Message from <b>{{ notification.actor }}</b>
+                <button class="dropdown-item" type="button">{{ notification.description }}</button>			
+            </div>
+            <div class="dropdown-divider"></div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="product-container">
+            <div id="profile-message-box" class="alert alert-info text-center rounded shadow p-3"></div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
+                {% for profile in profiles %}
+                <div class="col mb-3">
+                    <div class="card h-100 border-1">
+
+                        {% if request.user.is_authenticated %}
+                        <button class="favourite-profile text-end pe-1 pt-1" data-profile-item="{{ profile.id }}" aria-label="Like the profile">
+                            <i class="fa-regular fa-heart h5"></i>
+                        </button>
+                        {% endif %}
+                        
+                        {% if profile.profile_image %}
+                        <div class="px-1 card-img-top h-100">
+                            <img class="img-fluid" src="{{ profile.profile_image.url }}" alt="{{ profile.user }}">
+                        </div> 
+                        {% else %}
+                        <div>
+                            <p>No image</p>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="card-body p-2 pb-0">
+                            <p class="mb-0">
+                                {{ profile.user }}
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    console.log('JS file working - like profile');
+
+    $(document).ready(function(){
+        $('.favourite-profile').click(
+            function(e) {
+                let profile_id = $(this).attr('data-profile-item');
+                let that = $(this);
+                let icon = that.find('.fa-heart');
+                let icon_classlist_value = icon[0].classList.value;
+                let csrftoken = Cookies.get('csrftoken');
+                let action_url = `${profile_id}/favourite/`;
+    
+                $.ajax({
+                    url: action_url,
+                    type: 'POST',
+                    data: {'profile_id': profile_id, 'icon_classlist_value': icon_classlist_value },
+                    headers : {'X-CSRFToken': csrftoken},
+                    success: function (result) {
+                        console.log("Server Response:", result);
+
+                        // Check if the request was successful
+                        if (result.success) {
+                            let messageBox = $("#profile-message-box");
+
+                            // Update the message box text with the server's message
+                            messageBox.text(result.message);
+
+                            // Make the message box visible
+                            messageBox.fadeIn().delay(2000).fadeOut();
+
+                            // Toggle the heart icon (like/unlike)
+                            let icon = that.find('.fa-heart');
+                            if (result.liked) {
+                                icon.removeClass('fa-regular').addClass('fa-solid');
+                            } else {
+                                icon.removeClass('fa-solid').addClass('fa-regular');
+                            }
+                        } else {
+                            console.error("Error: " + result.message);
+                        }
+                    },
+
+                });
+            }
+        );
+    });
+
+</script>
+
+{% endblock %}

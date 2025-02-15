@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-10 col-xl-8 text-center mx-auto">
+        </div>
+    </div>
+</div>
+<div class="text-center container">
+    <header class="mt-4">
+        <h1>Contact Us</h1>
+    </header>
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <p>
+                Feel free to reach out with any inquiries you have or suggestions to improve our app. Our dedicated team is here to enhance your
+                dating journey, ensuring it's a delightful and memorable experience. Your satisfaction is our priority,
+                and we look forward to assisting you in every way possible.
+            </p>
+        </div>
+    </div>
+    <!--Contact Form-->
+    <div class="row">
+        <div class="col col-md-10 col-lg-8 col-xl-6 py-4 mx-auto">
+            <form class="shadow p-3 border rounded" method="post"
+                action="{% url 'contact' %}">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-pink mt-0" type="submit"
+                    aria-label="Submit button for contact form">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,282 @@
+:root {
+  --font-montserrat: "Montserrat", serif;
+  --font-great-vibes: "Great Vibes", serif;
+  --seasalt: #fafafa;
+  --charcoal: #1b1b1b;
+  --red: #B10009;
+  --dark-burgundy: #2D0709;
+  --light-burgundy: #520408;
+  --pink: #fa9ca1;
+}
+
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+nav, footer {
+background:
+  radial-gradient(hsl(357, 95%, 8%) 4%, hsl(357, 95%, 6%) 9%, hsla(357, 95%, 7%, 0) 9%) 0 0,
+  radial-gradient(hsl(357, 95%, 8%) 4%, hsl(357, 95%, 6%) 8%, hsla(357, 95%, 7%, 0) 10%) 50px 50px,
+  radial-gradient(hsla(357, 95%, 12%, 0.8) 20%, hsla(357, 95%, 7%, 0)) 50px 0,
+  radial-gradient(hsla(357, 95%, 12%, 0.8) 20%, hsla(357, 95%, 7%, 0)) 0 50px,
+  radial-gradient(hsla(357, 95%, 7%, 1) 35%, hsla(357, 95%, 7%, 0) 60%) 50px 0,
+  radial-gradient(hsla(357, 95%, 7%, 1) 35%, hsla(357, 95%, 7%, 0) 60%) 100px 50px,
+  radial-gradient(hsla(357, 95%, 5%, 0.7), hsla(357, 95%, 7%, 0)) 0 0,
+  radial-gradient(hsla(357, 95%, 5%, 0.7), hsla(357, 95%, 7%, 0)) 50px 50px,
+  linear-gradient(45deg, hsla(357, 95%, 7%, 0) 49%, hsla(357, 95%, 0%, 1) 50%, hsla(357, 95%, 7%, 0) 70%) 0 0,
+  linear-gradient(-45deg, hsla(357, 95%, 7%, 0) 49%, hsla(357, 95%, 0%, 1) 50%, hsla(357, 95%, 7%, 0) 70%) 0 0;
+  background-color: #1A0304;
+  background-size: 100px 100px;
+}
+
+body {
+  background-color: var(--seasalt);
+  color: var(--charcoal);
+  font-family: var(--font-montserrat);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--light-burgundy);
+}
+
+.navbar,
+footer {
+  background-color: var(--dark-burgundy);
+  color: var(--seasalt);
+}
+
+h1,
+h2,
+h3,
+.navbar-brand,
+.copyright {
+  font-family: var(--font-great-vibes);
+}
+
+.nav-link {
+  color: var(--seasalt);
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+}
+
+.nav-link:hover,
+.team-link:hover {
+  color: var(--pink);
+  font-weight: 500;
+  transform: scale(1.2);
+}
+
+.nav-link.active {
+  color: var(--pink) !important;
+  font-weight: 700;
+}
+
+.team-link {
+  color: var(--seasalt);
+}
+
+/* Buttons */
+.btn-pink {
+  background: linear-gradient(45deg, #fd5d6b, #fa9ca1);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--pink);
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.btn-pink:hover {
+  background: linear-gradient(45deg, #fa5c69, #fc9b9f);
+  color: var(--charcoal);
+}
+
+.btn-red {
+  background: linear-gradient(45deg, #520408, #B10009);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--light-burgundy);
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.btn-red:hover {
+  background: linear-gradient(45deg, #200405, #a50009);
+  color: var(--seasalt);
+}
+
+/* Team Page */
+.team-card {
+  border: 1px solid var(--red);
+}
+
+.team-card:hover {
+  transform: scale(1.01);
+}
+
+.social-link {
+  color: var(--light-burgundy);
+}
+
+.social-link:hover {
+  color: var(--dark-burgundy);
+  transform: scale(1.03);
+}
+
+.wrapper {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 10px;
+  animation: pulse 1s infinite;
+}
+
+.pulsingheart {
+  position: relative;
+  width: 60px;
+  height: 50px;
+}
+
+.pulsingheart:before,
+.pulsingheart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: var(--light-burgundy);
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  animation: pulsecolor 1s infinite;
+}
+
+.pulsingheart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+  animation: pulsecolor 1s infinite;
+}
+
+@keyframes pulse {
+  10% {
+    transform: scale(1.1)
+  }
+}
+
+@keyframes pulsecolor {
+  10% {
+    background: var(--dark-burgundy)
+  }
+}
+
+.logo {
+  width: 60px;
+  /* Increase logo size */
+  height: auto;
+  /* Keep aspect ratio */
+}
+
+.text-glow {
+  text-shadow: 0 0 1px #ffffff77, 0 0 3px #ffffff75, 0 0 5px rgba(255, 226, 228, 0.514), 0 0 6px rgba(255, 226, 228, 0.473), 0 0 8px rgba(255, 226, 228, 0.562);
+  text-align: center;
+}
+
+/* Home Page */
+.slide-heading {
+  color: var(--seasalt);
+  font-size: 4rem;
+}
+
+#heroCarousel {
+  margin: auto;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* About Page */
+strong {
+  color: var(--dark-burgundy);
+}
+
+/* FAQ Page */
+.faq-link {
+  color: var(--light-burgundy)!important;
+  font-family: var(--font-montserrat);
+}
+
+.faq-link:hover {
+  color: var(--dark-burgundy);
+  font-weight: 500;
+}
+
+/* Profile Page */
+#profile-message-box {
+  background-color: var(--seasalt);
+  border: 1px solid var(--light-burgundy);
+  color: var(--charcoal);
+  display: none;
+  position: fixed;
+  right: 1rem;
+  top: 7rem;
+  z-index: 1000;
+}
+
+/* Contact Page */
+input, textarea {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+label {
+  color: var(--light-burgundy);
+}
+
+/* Allauth */
+.allauth-link {
+  color: var(--light-burgundy)!important;
+}
+
+.allauth-link:hover {
+  color: var(--dark-burgundy) !important;
+}
+
+a[href*="password/reset"] {
+  color: var(--light-burgundy);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a[href*="password/reset"]:hover {
+  color: var(--dark-burgundy);
+  text-decoration: underline;
+}
+
+li {
+  list-style-type: none !important;
+}
+
+/* Add margin so that h1 element of Login and Sign Up page appears fully */
+body .container h1:first-of-type {
+  margin-top: 50px; 
+}
+
+
+@media (max-width: 768px) {
+  .logo {
+    width: 50px;
+    /* Reduce size on smaller screens */
+  }
+}

@@ -15,11 +15,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path, include
+
+from . views import error_403, error_404, error_500
+
+
+handler403 = error_403
+handler404 = error_404
+handler500 = error_500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),  # path for home page
-	path('questionnaire/', include('questionnaire.urls')),  # path for questionnaire page
+	  path('questionnaire/', include('questionnaire.urls')),  # path for questionnaire page
     path("chat/", include("chat.urls")),  # path for instant chat pages
+    path('messages/', include('user_messages.urls')),  # path for messages page
+    path('profiles/', include('profiles.urls')),  # path for profiles page
+    path('contact/', include('contact.urls')),
 ]
+
+if settings.DEBUG:  # Only serve media files in development mode
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

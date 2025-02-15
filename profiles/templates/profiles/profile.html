@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<div class="container mt-5">
+    <h1 class="text-center">My Profile</h1>
+
+    {% if new_user or not profile.bio %}
+        <div class="alert alert-info text-center">
+            <p>You haven't set up your profile yet. Please fill in your details below.</p>
+        </div>
+    {% elif edit_mode %}
+        <div class="alert alert-info text-center">
+            <p>Edit your details below.</p>
+        </div>
+    {% endif %}
+
+    {% if new_user or not profile.bio or edit_mode %}
+    <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="id_profile_image" class="form-label">Profile Picture</label>
+                <input type="file" class="form-control" id="id_profile_image" name="profile_image">
+            </div>
+
+            <div class="mb-3">
+                <label for="id_bio" class="form-label">Bio</label>
+                <textarea class="form-control" id="id_bio" name="bio" rows="3">{{ form.bio.value }}</textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="id_gender" class="form-label">Gender</label>
+                    {{ form.gender }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="id_age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="id_age" name="age" value="{{ form.age.value }}">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="id_location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="id_location" name="location"
+                    value="{{ form.location.value }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="id_interests" class="form-label">Interests</label>
+                <textarea class="form-control" id="id_interests" name="interests"
+                    rows="2">{{ form.interests.value }}</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="id_relationship_goal" class="form-label">Looking For</label>
+                {{ form.relationship_goal }}
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Save Profile</button>
+        </form>
+    </div>
+
+    {% else %}
+    <div class="row justify-content-center pb-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="card mx-auto shadow p-4">
+                <div class="text-center">
+                    {% if profile.profile_image and profile.profile_image.url != "/media/profile_pics/default.jpg" %}
+                        <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Profile Picture">
+                    {% else %}
+                        <img src="{% static 'images/profile_placeholder.png' %}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
+                    {% endif %}
+                </div>
+                <h2 class="text-center">{{ profile.user.username }}</h2>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Bio:</strong> {{ profile.bio }}</li>
+                    <li class="list-group-item"><strong>Gender:</strong> {{ profile.get_gender_display }}</li>
+                    <li class="list-group-item"><strong>Age:</strong> {{ profile.age }}</li>
+                    <li class="list-group-item"><strong>Location:</strong> {{ profile.location }}</li>
+                    <li class="list-group-item"><strong>Interests:</strong> {{ profile.interests }}</li>
+                    <li class="list-group-item"><strong>Looking for:</strong> {{ profile.get_relationship_goal_display }}</li>
+                    <li class="list-group-item"><strong>Age Preference:</strong> {{ profile.age_preference }}</li>
+                    <li class="list-group-item"><strong>Spark Type:</strong> {{ profile.spark_type }}</li>
+                    <li class="list-group-item"><strong>Gender Preference:</strong> {{ profile.gender_preference }}</li>
+                </ul>
+
+                <div class="text-center mt-3">
+                    <a href="{% url 'profiles:profile' %}?edit=true" class="btn btn-pink">Edit Profile</a>
+                </div>
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-red ms-2" data-bs-toggle="modal"
+                        data-bs-target="#deleteAccountModal">
+                        Delete Profile
+                    </button>
+                </div>
+
+                <!-- Delete Account Modal -->
+                <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-danger" id="deleteAccountModalLabel">Delete Account</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger">
+                                    <h6>Warning: This action cannot be undone!</h6>
+                                    <p>Deleting your account will:</p>
+                                    <ul>
+                                        <li>Permanently delete your profile</li>
+                                        <li>Remove all your messages and matches</li>
+                                        <li>Delete your account completely</li>
+                                    </ul>
+                                </div>
+                                <p>Please type <strong>DELETE</strong> to confirm:</p>
+                                <input type="text" id="deleteConfirmation" class="form-control"
+                                    placeholder="Type DELETE here">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <form method="POST" action="{% url 'profiles:delete_profile' %}" id="deleteAccountForm">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger" id="confirmDeleteBtn" disabled>Delete
+                                        Account</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    document.getElementById('deleteConfirmation').addEventListener('input', function() {
+        document.getElementById('confirmDeleteBtn').disabled = this.value !== 'DELETE';
+    });
+</script>
+{% endblock %}
