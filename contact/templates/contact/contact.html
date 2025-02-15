@@ -27,11 +27,11 @@
     <!--Contact Form-->
     <div class="row">
         <div class="col col-md-10 col-lg-8 col-xl-6 py-4 mx-auto">
-            <form class="p-2 border rounded" method="post"
+            <form class="shadow p-3 border rounded" method="post"
                 action="{% url 'contact' %}">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button class="btn btn-pink mt-0 rounded" type="submit"
+                <button class="btn btn-pink mt-0" type="submit"
                     aria-label="Submit button for contact form">Submit</button>
             </form>
         </div>

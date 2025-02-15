@@ -28,7 +28,7 @@ body {
 
 h1,
 h2,
-h2 {
+h3 {
   color: var(--light-burgundy);
 }
 
@@ -40,8 +40,9 @@ footer {
 
 h1,
 h2,
-h2,
-.navbar-brand {
+h3,
+.navbar-brand,
+.copyright {
   font-family: var(--font-great-vibes);
 }
 
@@ -69,15 +70,19 @@ h2,
 
 /* Buttons */
 .btn-pink {
-  background-color: var(--pink);
-  color: var(--charcoal);
-  font-weight: 500;
+  background: linear-gradient(45deg, #fd5d6b, #fa9ca1);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--pink);
   text-transform: uppercase;
+  transition: 0.3s;
 }
 
 .btn-pink:hover {
-  background-color: var(--pink);
-  transform: scale(1.02);
+  background: linear-gradient(45deg, #fd5d6b, #fa9ca1);
+  color: var(--charcoal);
 }
 
 /* Team Page */
@@ -157,6 +162,19 @@ h2,
   text-align: center;
 }
 
+/* Home Page */
+.slide-heading {
+  color: var(--seasalt);
+  font-size: 4rem;
+}
+
+#heroCarousel {
+  margin: auto;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* Profile Page */
 #profile-message-box {
   background-color: var(--seasalt);
   border: 1px solid var(--light-burgundy);
@@ -166,6 +184,15 @@ h2,
   right: 1rem;
   top: 7rem;
   z-index: 1000;
+}
+
+/* Contact Page */
+input, textarea {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+label {
+  color: var(--light-burgundy);
 }
 
 @media (max-width: 768px) {
