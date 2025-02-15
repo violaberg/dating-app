@@ -195,6 +195,16 @@ strong {
   color: var(--dark-burgundy);
 }
 
+/* FAQ Page */
+.faq-link {
+  color: var(--light-burgundy);
+}
+
+.faq-link:hover {
+  color: var(--dark-burgundy);
+  font-weight: 500;
+}
+
 /* Profile Page */
 #profile-message-box {
   background-color: var(--seasalt);

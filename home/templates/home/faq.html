@@ -4,7 +4,7 @@
 <title>{% block title %}FAQ{% endblock %}</title>
 
 {% block content %}
-<div class="container pt-3">
+<div class="container py-3">
     <div class="row mx-auto pt-2">
         <div class="col-12 text-center mx-auto pb-2">
             <h1 class="mx-auto mb-4 p-2">Frequently Asked Questions</h1>
@@ -12,12 +12,12 @@
 
         <div class="col mb-3">
             <div id="faq-section">
-                <div class="accordion" id="faqAccordion">
+                <div class="accordion shadow" id="faqAccordion">
                     {% for faq in faqs %}
 
                     <!-- FAQ Item -->
                     <div class="card">
-                        <div class="card-header" id="faqHeading{{ faq.id }}" data-bs-toggle="collapse"
+                        <div class="card-header shadow" id="faqHeading{{ faq.id }}" data-bs-toggle="collapse"
                             data-bs-target="#faqCollapse{{ faq.id }}" aria-expanded="true"
                             aria-controls="faqCollapse{{ faq.id }}" role="button">
                             <h2 class="mb-0 d-flex justify-content-between align-items-center faq-link btn">
