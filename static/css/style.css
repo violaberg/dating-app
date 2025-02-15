@@ -213,7 +213,8 @@ strong {
 
 /* FAQ Page */
 .faq-link {
-  color: var(--light-burgundy);
+  color: var(--light-burgundy)!important;
+  font-family: var(--font-montserrat);
 }
 
 .faq-link:hover {
