@@ -21,8 +21,7 @@ main {
 }
 
 nav, footer {
-background: var(--dark-burgundy);
-/*background:
+background:
   radial-gradient(hsl(357, 95%, 8%) 4%, hsl(357, 95%, 6%) 9%, hsla(357, 95%, 7%, 0) 9%) 0 0,
   radial-gradient(hsl(357, 95%, 8%) 4%, hsl(357, 95%, 6%) 8%, hsla(357, 95%, 7%, 0) 10%) 50px 50px,
   radial-gradient(hsla(357, 95%, 12%, 0.8) 20%, hsla(357, 95%, 7%, 0)) 50px 0,
@@ -34,7 +33,7 @@ background: var(--dark-burgundy);
   linear-gradient(45deg, hsla(357, 95%, 7%, 0) 49%, hsla(357, 95%, 0%, 1) 50%, hsla(357, 95%, 7%, 0) 70%) 0 0,
   linear-gradient(-45deg, hsla(357, 95%, 7%, 0) 49%, hsla(357, 95%, 0%, 1) 50%, hsla(357, 95%, 7%, 0) 70%) 0 0;
   background-color: #1A0304;
-  background-size: 100px 100px;*/
+  background-size: 100px 100px;
 }
 
 body {
@@ -98,7 +97,7 @@ h3,
 }
 
 .btn-pink:hover {
-  background: linear-gradient(45deg, #fd5d6b, #fa9ca1);
+  background: linear-gradient(45deg, #fa5c69, #fc9b9f);
   color: var(--charcoal);
 }
 
@@ -189,6 +188,11 @@ h3,
   margin: auto;
   max-width: 1000px;
   width: 100%;
+}
+
+/* About Page */
+strong {
+  color: var(--dark-burgundy);
 }
 
 /* Profile Page */
