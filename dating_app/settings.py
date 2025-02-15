@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     # Custom apps
     'home',
     'chat',
-	  'questionnaire',
+	'questionnaire',
     'user_messages',
     'profiles',
     'contact',
