@@ -1,1 +1,1 @@
-web: gunicorn dating_app.wsgi
+web: gunicorn dating_app.wsgi:application
