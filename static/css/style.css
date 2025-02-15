@@ -212,6 +212,15 @@ label {
   color: var(--light-burgundy);
 }
 
+/* Allauth */
+.allauth-link {
+  color: var(--light-burgundy)!important;
+}
+
+.allauth-link:hover {
+  color: var(--dark-burgundy) !important;
+}
+
 @media (max-width: 768px) {
   .logo {
     width: 50px;
