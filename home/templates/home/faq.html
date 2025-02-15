@@ -4,7 +4,7 @@
 <title>{% block title %}FAQ{% endblock %}</title>
 
 {% block content %}
-<div class="container pt-3">
+<div class="container py-3">
     <div class="row mx-auto pt-2">
         <div class="col-12 text-center mx-auto pb-2">
             <h1 class="mx-auto mb-4 p-2">Frequently Asked Questions</h1>
@@ -12,56 +12,35 @@
 
         <div class="col mb-3">
             <div id="faq-section">
-                <div class="accordion" id="faqAccordion">
+                <div class="accordion shadow" id="faqAccordion">
                     {% for faq in faqs %}
 
                     <!-- FAQ Item -->
                     <div class="card">
-                        <div class="card-header" id="faqHeading{{ faq.id }}" data-bs-toggle="collapse"
-                            data-bs-target="#faqCollapse{{ faq.id }}" aria-expanded="true"
-                            aria-controls="faqCollapse{{ faq.id }}" role="button">
-                            <h2 class="mb-0 d-flex justify-content-between align-items-center faq-link btn">
+                        <div class="card-header shadow" id="faqHeading{{ faq.id }}">
+                            <h2 class="faq-question mb-0 d-flex justify-content-between align-items-center">
+                                <button class="btn btn-link faq-link text-decoration-none w-100 text-start" 
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faqCollapse{{ faq.id }}" 
+                                    aria-expanded="true"
+                                    aria-controls="faqCollapse{{ faq.id }}">
                                     {{ faq.question }}
-                                <small><i class="fa-solid fa-chevron-down"></i></small>
+                                    <small><i class="fa-solid fa-chevron-down"></i></small>
+                                </button>
                             </h2>
                         </div>
-                        <div id="faqCollapse{{ faq.id }}" class="collapse" aria-labelledby="faqHeading{{ faq.id }}"
+                        <div id="faqCollapse{{ faq.id }}" class="collapse" aria-labelledby="faqHeading{{ faq.id }}" 
                             data-bs-parent="#faqAccordion">
-                            <div class="card-body pb-2 pl-2">
+                            <div class="card-body">
                                 {{ faq.answer }}
                             </div>
                         </div>
                     </div>
+
                     {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block postloadjs %}
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var faqLinks = document.querySelectorAll(".faq-link");
-
-        faqLinks.forEach(function (link) {
-            link.addEventListener("click", function () {
-                var collapseItem = this.closest(".card").querySelector(".collapse");
-                var icon = this.querySelector("small i");
-
-                // Toggle collapse class
-                if (collapseItem.classList.contains("show")) {
-                    collapseItem.classList.remove("show");
-                    icon.classList.remove("fa-chevron-up");
-                    icon.classList.add("fa-chevron-down");
-                } else {
-                    collapseItem.classList.add("show");
-                    icon.classList.remove("fa-chevron-down");
-                    icon.classList.add("fa-chevron-up");
-                }
-            });
-        });
-    });
-</script>
 {% endblock %}

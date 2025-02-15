@@ -42,8 +42,10 @@
 ## **Tech Stack**  
 - HTML, CSS, JavaScript, Django, Python  
 - Version Control: Git
-- Bootstrap CDN - linked as per [Bootstrap docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [Bootstrap 5](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - [Google Fonts](https://fonts.google.com)
+- [Neon database](https://console.neon.tech/) - database
+- [Resend](https://resend.com/) - used for contact form
 
 ## **Future Development**
 
