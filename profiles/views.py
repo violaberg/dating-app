@@ -23,7 +23,10 @@ def view_or_edit_profile(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
+            messages.success(request, "Your profile details have been updated successfully!")
             return redirect('profiles:profile')  # Redirect to profile after saving
+        else:
+            messages.error(request, "Something went wrong. Please check your inputs.")
     else:
         form = ProfileForm(instance=profile)
 

@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load static %} 
 {% block content %}
+{% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 <div class="container mt-5">
     <h1 class="text-center">My Profile</h1>
 
