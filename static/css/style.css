@@ -20,6 +20,23 @@ main {
   flex: 1;
 }
 
+nav, footer {
+background: var(--dark-burgundy);
+/*background:
+  radial-gradient(hsl(357, 95%, 8%) 4%, hsl(357, 95%, 6%) 9%, hsla(357, 95%, 7%, 0) 9%) 0 0,
+  radial-gradient(hsl(357, 95%, 8%) 4%, hsl(357, 95%, 6%) 8%, hsla(357, 95%, 7%, 0) 10%) 50px 50px,
+  radial-gradient(hsla(357, 95%, 12%, 0.8) 20%, hsla(357, 95%, 7%, 0)) 50px 0,
+  radial-gradient(hsla(357, 95%, 12%, 0.8) 20%, hsla(357, 95%, 7%, 0)) 0 50px,
+  radial-gradient(hsla(357, 95%, 7%, 1) 35%, hsla(357, 95%, 7%, 0) 60%) 50px 0,
+  radial-gradient(hsla(357, 95%, 7%, 1) 35%, hsla(357, 95%, 7%, 0) 60%) 100px 50px,
+  radial-gradient(hsla(357, 95%, 5%, 0.7), hsla(357, 95%, 7%, 0)) 0 0,
+  radial-gradient(hsla(357, 95%, 5%, 0.7), hsla(357, 95%, 7%, 0)) 50px 50px,
+  linear-gradient(45deg, hsla(357, 95%, 7%, 0) 49%, hsla(357, 95%, 0%, 1) 50%, hsla(357, 95%, 7%, 0) 70%) 0 0,
+  linear-gradient(-45deg, hsla(357, 95%, 7%, 0) 49%, hsla(357, 95%, 0%, 1) 50%, hsla(357, 95%, 7%, 0) 70%) 0 0;
+  background-color: #1A0304;
+  background-size: 100px 100px;*/
+}
+
 body {
   background-color: var(--seasalt);
   color: var(--charcoal);
@@ -28,7 +45,7 @@ body {
 
 h1,
 h2,
-h2 {
+h3 {
   color: var(--light-burgundy);
 }
 
@@ -40,8 +57,9 @@ footer {
 
 h1,
 h2,
-h2,
-.navbar-brand {
+h3,
+.navbar-brand,
+.copyright {
   font-family: var(--font-great-vibes);
 }
 
@@ -69,15 +87,19 @@ h2,
 
 /* Buttons */
 .btn-pink {
-  background-color: var(--pink);
-  color: var(--charcoal);
-  font-weight: 500;
+  background: linear-gradient(45deg, #fd5d6b, #fa9ca1);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--pink);
   text-transform: uppercase;
+  transition: 0.3s;
 }
 
 .btn-pink:hover {
-  background-color: var(--pink);
-  transform: scale(1.02);
+  background: linear-gradient(45deg, #fd5d6b, #fa9ca1);
+  color: var(--charcoal);
 }
 
 /* Team Page */
@@ -104,7 +126,6 @@ h2,
   margin-top: 10px;
   animation: pulse 1s infinite;
 }
-
 
 .pulsingheart {
   position: relative;
@@ -154,10 +175,41 @@ h2,
 }
 
 .text-glow {
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa;
-  color: white;
-  font-size: 30px;
+  text-shadow: 0 0 1px #ffffff77, 0 0 3px #ffffff75, 0 0 5px rgba(255, 226, 228, 0.514), 0 0 6px rgba(255, 226, 228, 0.473), 0 0 8px rgba(255, 226, 228, 0.562);
   text-align: center;
+}
+
+/* Home Page */
+.slide-heading {
+  color: var(--seasalt);
+  font-size: 4rem;
+}
+
+#heroCarousel {
+  margin: auto;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* Profile Page */
+#profile-message-box {
+  background-color: var(--seasalt);
+  border: 1px solid var(--light-burgundy);
+  color: var(--charcoal);
+  display: none;
+  position: fixed;
+  right: 1rem;
+  top: 7rem;
+  z-index: 1000;
+}
+
+/* Contact Page */
+input, textarea {
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+label {
+  color: var(--light-burgundy);
 }
 
 @media (max-width: 768px) {

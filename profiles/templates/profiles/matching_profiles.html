@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col text-center mt-4 mb-3">
-            <h4>Find your match</h4>
+            <h1>Find your match</h1>
         </div>
     </div>
 
@@ -23,6 +23,7 @@
 
     <div class="row">
         <div class="product-container">
+            <div id="profile-message-box" class="alert alert-info text-center rounded shadow p-3"></div>
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
                 {% for profile in profiles %}
                 <div class="col mb-3">
@@ -79,14 +80,30 @@
                     data: {'profile_id': profile_id, 'icon_classlist_value': icon_classlist_value },
                     headers : {'X-CSRFToken': csrftoken},
                     success: function (result) {
-                        if (icon[0].classList.contains('fa-regular')) {
-                            icon[0].classList.remove('fa-regular');
-                            icon[0].classList.add('fa-solid');
-                        } else if (icon[0].classList.contains('fa-solid')) {
-                            icon[0].classList.remove('fa-solid');
-                            icon[0].classList.add('fa-regular');
+                        console.log("Server Response:", result);
+
+                        // Check if the request was successful
+                        if (result.success) {
+                            let messageBox = $("#profile-message-box");
+
+                            // Update the message box text with the server's message
+                            messageBox.text(result.message);
+
+                            // Make the message box visible
+                            messageBox.fadeIn().delay(2000).fadeOut();
+
+                            // Toggle the heart icon (like/unlike)
+                            let icon = that.find('.fa-heart');
+                            if (result.liked) {
+                                icon.removeClass('fa-regular').addClass('fa-solid');
+                            } else {
+                                icon.removeClass('fa-solid').addClass('fa-regular');
+                            }
+                        } else {
+                            console.error("Error: " + result.message);
                         }
-                    },   
+                    },
+
                 });
             }
         );

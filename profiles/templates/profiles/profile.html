@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-center">My Profile</h2>
+    <h1 class="text-center">My Profile</h1>
 
     {% if new_user or not profile.bio or edit_mode %}
     <div class="alert alert-info text-center">
@@ -63,7 +63,7 @@
                     <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3"
                         alt="Profile Picture">
                 </div>
-                <h4 class="text-center">{{ profile.user.username }}</h4>
+                <h2 class="fs-4 text-center">{{ profile.user.username }}</h2>
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>Bio:</strong> {{ profile.bio }}</li>

@@ -44,7 +44,7 @@
             <!-- App Name -->
             <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
                 <img src="{% static 'images/logo.png' %}" alt="SparkSync Logo" class="logo me-2">
-                <span class="fs-4 fw-bold text-glow">SparkSync</span>
+                <span class="fs-1 text-glow">SparkSync</span>
             </a>
             <!-- Mobile Menu Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -84,13 +84,13 @@
     </nav>
 
     <!-- Next 7 lines copied from https://www.brntn.me/blog/how-i-use-djangos-messages-framework/ -->
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    {% for message in messages %}
+          <div class="alert {{ message.tags }} alert-dismissible
+          fade show" id="msg" role="alert">
+            {{ message | safe }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
 
     <!-- Main Content -->
     <main class="container flex-grow-1 mt-5 pt-5">
@@ -100,7 +100,7 @@
     <!-- Footer -->
     <footer class="text-center py-3">
         <div class="container text-center">
-        <span class="fs-5 mb-1">&copy; SparkSync</span>
+        <span class="copyright fs-4 mb-1">&copy; SparkSync</span>
         <p class="pb-2">All rights reserved</p>
         <a class="btn btn-pink rounded mt-2 mx-2 fs-6 text-decoration-none" href="{% url 'contact' %}"
         aria-label="Brings to Contact Page">Contact Us</a>

@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
+import json
+from django.http import JsonResponse
+
 from .models import Profile
 from .forms import ProfileForm
 from django.contrib.auth import logout
@@ -59,55 +62,30 @@ def matching_profiles(request):
 
 @login_required
 def like_profile(request, profile_id):
-    """
-    Likes/unlikes a profile
-    """
-    if request.POST and 'profile_id' in request.POST:
-        if 'fa-regular' in request.POST['icon_classlist_value']:
-            try:
-                messages.success(request, 'You liked this profile')
-                sender = User.objects.get(username=request.user)
-                recipient = User.objects.get(profile=profile_id)
-                message = f"{sender} just liked your profile"
-                notify.send(actor=sender, recipient=recipient, verb='Message', description=message)
-                print('User notified about the like')
-                messages.success(request, 'The user has been notified')
-            except Exception:
-                messages.error(
-                    request, 'Sorry, an error occurred. Please try again later')
-        elif 'fa-solid' in request.POST['icon_classlist_value']:
-            try:
-                messages.success(
-                    request, 'You unliked this profile')
-            except Exception:
-                messages.error(
-                    request, 'Sorry, an error occurred. Please try again')
-    else:
-        messages.error(
-            request,
-            'Sorry, something went wrong with bookmarking. Try again')
+    if request.method == "POST":
+        icon_class = request.POST.get("icon_classlist_value", "")
 
-    return redirect(reverse('matching_profiles'))
+        try:
+            sender = request.user
+            recipient_profile = Profile.objects.get(id=profile_id)
+            recipient = recipient_profile.user  
 
+            liked = "fa-regular" in icon_class  # Toggle based on current state
+            message = "You liked this profile ❤️" if liked else "You unliked this profile 💔"
 
-@login_required
-def delete_profile(request):
-    if request.method == 'POST':
-        profile = request.user.profile
-        # Delete profile image if it exists
-        if profile.profile_image:
-            profile.profile_image.delete()
-        
-        # Reset profile fields
-        profile.bio = ''
-        profile.gender = ''
-        profile.age = None
-        profile.location = ''
-        profile.interests = ''
-        profile.relationship_goal = ''
-        profile.save()
-        
-        messages.success(request, 'Your profile has been deleted successfully.')
-        return redirect('profile')
-    
-    return redirect('profile')
+            response_data = {
+                "success": True,
+                "liked": liked,
+                "message": message
+            }
+            print("Server Response:", json.dumps(response_data, indent=4))  # Debugging
+            return JsonResponse(response_data)
+
+        except Profile.DoesNotExist:
+            return JsonResponse({"success": False, "message": "Profile not found"}, status=404)
+
+        except Exception as e:
+            return JsonResponse({"success": False, "message": str(e)}, status=400)
+
+    return JsonResponse({"success": False, "message": "Invalid request"}, status=400)
+
