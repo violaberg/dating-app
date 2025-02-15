@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Questionnaire</h2>
+<h2 class="py-4">Questionnaire</h2>
 
 <!-- Display success message if it exists -->
 {% if success_message %}
@@ -17,7 +17,7 @@
     <!-- Loop through all questions -->
     {% for question in questions %}
         <div class="mb-4">
-            <h4>{{ question.question_text }}</h4>
+            <h3>{{ question.question_text }}</h3>
 
             <!-- Display answers based on question type -->
             {% if question.question_type == "single" %}
@@ -61,6 +61,6 @@
     {% endfor %}
 
     <!-- Submit button -->
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-pink">Submit</button>
 </form>
 {% endblock %}
