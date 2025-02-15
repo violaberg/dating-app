@@ -57,3 +57,4 @@ pyasn1_modules==0.4.1
 pycparser==2.22
 setuptools==75.8.0
 typing_extensions==4.12.2
+requests==2.32.3
