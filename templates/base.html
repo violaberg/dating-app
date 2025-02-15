@@ -62,7 +62,7 @@
                         <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link {% if request.path == '#' %}active{% endif %}" href="#">Sparky Chat</a>
+                        <a class="nav-link {% if request.path == '/chat/' %}active{% endif %}" href="{% url 'chat' %}">Sparky Chat</a>
                     </li>
                     
                     {% if user.is_authenticated %}
