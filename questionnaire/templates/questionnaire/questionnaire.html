@@ -1,66 +1,77 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
-<h2 class="py-4">Questionnaire</h2>
+<div class="container py-4">
+    <h1 class="text-center">Questionnaire</h1>
 
-<!-- Display success message if it exists -->
-{% if success_message %}
-    <div class="alert alert-success" role="alert">
-        {{ success_message }}
-    </div>
-{% endif %}
-
-<!-- Questionnaire form -->
-<form method="POST">
-    {% csrf_token %}
-
-    <!-- Loop through all questions -->
-    {% for question in questions %}
-        <div class="mb-4">
-            <h3>{{ question.question_text }}</h3>
-
-            <!-- Display answers based on question type -->
-            {% if question.question_type == "single" %}
-                <!-- Single Choice -->
-                {% for answer in question.answer_set.all %}
-                    <div>
-                        <input
-                            type="radio"
-                            name="question_{{ question.id }}"
-                            value="{{ answer.id }}"
-                            id="answer_{{ answer.id }}"
-                        >
-                        <label for="answer_{{ answer.id }}">{{ answer.answer_text }}</label>
-                    </div>
-                {% endfor %}
-
-            {% elif question.question_type == "multiple" %}
-                <!-- Multiple Choice -->
-                {% for answer in question.answer_set.all %}
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="question_{{ question.id }}"
-                            value="{{ answer.id }}"
-                            id="answer_{{ answer.id }}"
-                        >
-                        <label for="answer_{{ answer.id }}">{{ answer.answer_text }}</label>
-                    </div>
-                {% endfor %}
-
-            {% elif question.question_type == "text" %}
-                <!-- Text Input -->
-                <textarea
-                    name="question_{{ question.id }}"
-                    rows="3"
-                    cols="40"
-                    placeholder="Type your response here..."
-                ></textarea>
-            {% endif %}
+    <!-- Display success message if it exists -->
+    {% if success_message %}
+        <div class="alert alert-success" role="alert">
+            {{ success_message }}
         </div>
-    {% endfor %}
+    {% endif %}
 
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-pink">Submit</button>
-</form>
+    <!-- Questionnaire form -->
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+
+        <!-- Loop through all questions -->
+        {% for question in questions %}
+            <div class="mb-4">
+                <h3 class="mb-2">{{ question.question_text }}</h3>
+
+                {% if question.question_type == "single" %}
+                    <!-- Single Choice -->
+                    {% for answer in question.answer_set.all %}
+                        <div class="form-check">
+                            <input
+                                type="radio"
+                                name="question_{{ question.id }}"
+                                value="{{ answer.id }}"
+                                id="answer_{{ answer.id }}"
+                                class="form-check-input"
+                            >
+                            <label class="form-check-label" for="answer_{{ answer.id }}">
+                                {{ answer.answer_text }}
+                            </label>
+                        </div>
+                    {% endfor %}
+
+                {% elif question.question_type == "multiple" %}
+                    <!-- Multiple Choice -->
+                    {% for answer in question.answer_set.all %}
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                name="question_{{ question.id }}"
+                                value="{{ answer.id }}"
+                                id="answer_{{ answer.id }}"
+                                class="form-check-input"
+                            >
+                            <label class="form-check-label" for="answer_{{ answer.id }}">
+                                {{ answer.answer_text }}
+                            </label>
+                        </div>
+                    {% endfor %}
+
+                {% elif question.question_type == "text" %}
+                    <!-- Text Input -->
+                    <textarea
+                        name="question_{{ question.id }}"
+                        rows="3"
+                        class="form-control"
+                        placeholder="Type your response here..."
+                    ></textarea>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <!-- Submit button -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-pink">Submit</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
