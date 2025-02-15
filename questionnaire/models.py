@@ -43,7 +43,13 @@ class Answer(models.Model):
 class UserResponse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, blank=True, null=True)
+    answer = models.ForeignKey(
+    Answer,
+    on_delete=models.CASCADE,
+    blank=True,
+    null=True
+)
+
     text_response = models.TextField(blank=True, null=True)
 
     class Meta:
