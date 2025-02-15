@@ -233,6 +233,10 @@ a[href*="password/reset"]:hover {
   text-decoration: underline;
 }
 
+li {
+  list-style-type: none !important;
+}
+
 @media (max-width: 768px) {
   .logo {
     width: 50px;
