@@ -30,7 +30,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),  # path for home page
-	path('questionnaire/', include('questionnaire.urls')),  # path for questionnaire page
+	  path('questionnaire/', include('questionnaire.urls')),  # path for questionnaire page
+    path("chat/", include("chat.urls")),  # path for instant chat pages
     path('messages/', include('user_messages.urls')),  # path for messages page
     path('profiles/', include('profiles.urls')),  # path for profiles page
     path('contact/', include('contact.urls')),
