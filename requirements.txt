@@ -9,6 +9,7 @@ django-allauth==65.4.1
 django-crispy-forms==2.3
 django_notifications==0.1.dev0
 filelock==3.17.0
+gunicorn==23.0.0
 idna==3.10
 pillow==11.1.0
 platformdirs==4.3.6
