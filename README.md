@@ -164,7 +164,10 @@ Used for hover states and secondary elements.<br>
 Adds a soft, romantic touch to features.<br>
 
 ***Sea Salt (#fafafa)***<br>
-Clean, neutral background color ensuring content stands out
+Used for content areas requiring high brightness and clarity
+
+***Parchment (#fbf5df)***<br>
+Main background color, providing a warm, inviting atmosphere while being easier on the eyes
 
 ![Color palette](assets/colors/sparksync.png)
 
