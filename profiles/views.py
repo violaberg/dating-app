@@ -140,7 +140,7 @@ def like_profile(request, profile_id):
             recipient_profile = Profile.objects.get(id=profile_id)
             recipient = recipient_profile.user
 
-            # 🚫 Prevent users from liking their own profile
+            # Prevent users from liking their own profile
             if sender == recipient:
                 return JsonResponse(
                     {"success": False, "message": "You cannot like your own profile!"},
@@ -153,7 +153,7 @@ def like_profile(request, profile_id):
                 if liked else f"{sender.username} unliked your profile 💔"
             )
 
-            # ✅ Create a notification only when the profile is liked
+            # Create a notification only when the profile is liked
             if liked:
                 Notification.objects.create(
                     recipient=recipient,

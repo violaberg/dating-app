@@ -2,26 +2,27 @@
 {% load static %}
 {% block content %}
 {% if messages %}
-    <div class="container mt-3">
-        {% for message in messages %}
-            <div id="profile-message-box" class="alert {{ message.tags }} alert-dismissible fade show rounded shadow" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
+<div class="container mt-3">
+    {% for message in messages %}
+    <div id="profile-message-box" class="alert {{ message.tags }} alert-dismissible fade show rounded shadow"
+        role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    {% endfor %}
+</div>
 {% endif %}
 <div class="container mt-5">
     <h1 class="text-center">My Profile</h1>
 
     {% if new_user or not profile.bio %}
-        <div class="profile-message-box alert alert-info text-center rounded shadow">
-            <p>You haven't set up your profile yet. Please fill in your details below.</p>
-        </div>
+    <div class="profile-message-box alert alert-info text-center rounded shadow">
+        <p>You haven't set up your profile yet. Please fill in your details below.</p>
+    </div>
     {% elif edit_mode %}
-        <div class="profile-message-box alert alert-info text-center rounded shadow">
-            <p>Edit your details below.</p>
-        </div>
+    <div class="profile-message-box alert alert-info text-center rounded shadow">
+        <p>Edit your details below.</p>
+    </div>
     {% endif %}
 
     {% if new_user or not profile.bio or edit_mode %}
@@ -72,9 +73,11 @@
             <div class="card mx-auto shadow p-4">
                 <div class="text-center">
                     {% if profile.profile_image and profile.profile_image.url != "/media/profile_pics/default.jpg" %}
-                        <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Profile Picture">
+                    <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3"
+                        alt="Profile Picture">
                     {% else %}
-                        <img src="{% static 'images/profile_placeholder.png' %}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
+                    <img src="{% static 'images/profile_placeholder.png' %}"
+                        class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
                     {% endif %}
                 </div>
                 <h2 class="text-center">{{ profile.user.username }}</h2>
@@ -94,7 +97,7 @@
                     <li class="list-group-item">
                         <strong>Interested in:</strong>
                         {% for pref in profile.gender_preferences.all %}
-                            {{ pref.text }}{% if not forloop.last %}, {% endif %}
+                        {{ pref.text }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </li>
                     {% endif %}
@@ -103,7 +106,7 @@
                     <li class="list-group-item">
                         <strong>Age preferences:</strong>
                         {% for pref in profile.age_preferences.all %}
-                            {{ pref.text }}{% if not forloop.last %}, {% endif %}
+                        {{ pref.text }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}
                     </li>
                     {% endif %}
@@ -162,8 +165,16 @@
 </div>
 
 <script>
-    document.getElementById('deleteConfirmation').addEventListener('input', function() {
-        document.getElementById('confirmDeleteBtn').disabled = this.value !== 'DELETE';
+    document.addEventListener("DOMContentLoaded", function () {
+        var deleteInput = document.getElementById('deleteConfirmation');
+        var confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+
+        if (deleteInput && confirmDeleteBtn) {
+            deleteInput.addEventListener('input', function () {
+                confirmDeleteBtn.disabled = this.value !== 'DELETE';
+            });
+        }
     });
 </script>
+
 {% endblock %}
