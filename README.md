@@ -237,6 +237,8 @@ A romantic, script-style font used for logos and special headings. It adds an el
 - [Coolors color palette generator](https://coolors.co/)
 - [Background pattern](https://devsnap.me/css-background-patterns?)
 - [Hero Image](https://unsplash.com/photos/person-holding-fire-cracker-shallow-focus-photography-PAykYb-8Er8)
+- [Favicon generator](https://favicon.io/favicon-converter/)
+- [Favicon image](https://stock.adobe.com/ie/images/shiny-isolated-red-ruby-heart-shape-on-white-background/85233324?clickref=1100lA7oGHYg&mv=affiliate&mv2=pz&as_camptype=infinite-scroll-page-pricing_page_2025-ignore&as_channel=affiliate&as_source=partnerize&as_campaign=cheezy)
 
 ## **Testing**
 
