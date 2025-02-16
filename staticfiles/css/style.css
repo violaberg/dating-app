@@ -2,6 +2,7 @@
   --font-montserrat: "Montserrat", serif;
   --font-great-vibes: "Great Vibes", serif;
   --seasalt: #fafafa;
+  --cool-ivory: #F5F5EE;
   --charcoal: #1b1b1b;
   --red: #B10009;
   --dark-burgundy: #2D0709;
@@ -37,14 +38,15 @@ background:
 }
 
 body {
-  background-color: var(--seasalt);
+  background-color: #F5F5EE;
   color: var(--charcoal);
   font-family: var(--font-montserrat);
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   color: var(--light-burgundy);
 }
 
@@ -202,16 +204,20 @@ h3,
 
 #heroCarousel {
   margin: auto;
-  max-width: 1000px;
+  max-width: 800px;
   width: 100%;
 }
 
-/* About Page */
+.slogan {
+  color: var(--red);
+  font-family: var(--font-great-vibes);
+}
+
 strong {
   color: var(--dark-burgundy);
 }
 
-/* FAQ Page */
+/* FAQ Page & Privacy Policy */
 .faq-link {
   color: var(--light-burgundy)!important;
   font-family: var(--font-montserrat);
@@ -220,6 +226,10 @@ strong {
 .faq-link:hover {
   color: var(--dark-burgundy);
   font-weight: 500;
+}
+
+.policy-link {
+  color: var(--light-burgundy)!important;
 }
 
 /* Profile Page */
