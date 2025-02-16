@@ -117,6 +117,11 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://sparksync-test-baedaeaf485c.herokuapp.com',
+    'wss://sparksync-test-baedaeaf485c.herokuapp.com',
+]
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
