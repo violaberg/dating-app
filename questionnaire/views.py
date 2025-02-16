@@ -25,7 +25,7 @@ def questionnaire(request):
             profile.age_preferences.set(response.age_preferences.all())
 
             messages.success(request, 'Your preferences have been saved!')
-            return redirect('profiles:profile')
+            return redirect('profiles:matching_profiles')
 
     return render(request, 'questionnaire/questionnaire.html', {
         'form': form,
