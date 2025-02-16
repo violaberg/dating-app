@@ -277,6 +277,14 @@ body .container h1:first-of-type {
 @media (max-width: 768px) {
   .logo {
     width: 50px;
-    /* Reduce size on smaller screens */
+  }
+}
+
+@media (max-width: 991px) {
+  .mobile-link {
+    padding-top: 1rem;
+  }
+  nav {
+    text-align: center;
   }
 }
