@@ -69,14 +69,14 @@
                     <li class="nav-item px-2">
                         <a class="btn btn-pink {% if request.path == 'profiles:profile' %}active{% endif %}" href="{% url 'profiles:profile' %}" aria-label="Profile">Profile</a>
                     </li>
-                    <li class="nav-item px-2">
+                    <li class="mobile-link nav-item px-2">
                         <a class="btn btn-pink" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item px-2">
                         <a class="btn btn-pink" href="{% url 'account_login' %}" aria-label="Login">Login</a>
                     </li>
-                    <li class="nav-item px-2">
+                    <li class="mobile-link nav-item px-2">
                         <a class="btn btn-pink" href="{% url 'account_signup' %}" aria-label="Create Profile">Create
                             Profile</a>
                     </li>
@@ -103,16 +103,18 @@
     <!-- Footer -->
     <footer class="text-center py-3">
         <div class="container text-center">
-        <span class="copyright fs-4 mb-1">&copy; SparkSync</span>
-        <p class="pb-2">All rights reserved</p>
-        <a class="btn btn-pink rounded mt-2 mx-2 fs-6 text-decoration-none" href="{% url 'contact' %}"
-        aria-label="Brings to Contact Page">Contact Us</a>
-        <a class="btn btn-pink rounded mt-2 fs-6 text-decoration-none" href="{% url 'faq' %}"
-        aria-label="Brings to FAQ Page">FAQ</a>
-        <a class="btn btn-pink rounded mt-2 mx-2 fs-6 text-decoration-none" href="{% url 'team' %}"
-        aria-label="Brings to Team Page">Meet the Team</a>
-        <a class="btn btn-pink rounded mt-2 fs-6 text-decoration-none" href="{% url 'policy' %}"
-        aria-label="Brings to Privacy Policy Page">Privacy Policy</a>
+            <span class="copyright fs-4 mb-1">&copy; SparkSync</span>
+            <p class="pb-2">All rights reserved</p>
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+            <a class="btn btn-pink rounded mt-3 mx-2 fs-6 text-decoration-none" href="{% url 'contact' %}"
+            aria-label="Brings to Contact Page">Contact Us</a>
+            <a class="btn btn-pink rounded mt-3 fs-6 text-decoration-none" href="{% url 'faq' %}"
+            aria-label="Brings to FAQ Page">FAQ</a>
+            <a class="btn btn-pink rounded mt-3 mx-2 fs-6 text-decoration-none" href="{% url 'team' %}"
+            aria-label="Brings to Team Page">Meet the Team</a>
+            <a class="btn btn-pink rounded mt-3 fs-6 text-decoration-none" href="{% url 'policy' %}"
+            aria-label="Brings to Privacy Policy Page">Privacy Policy</a>
+            </div>
         </div>
     </footer>
 
