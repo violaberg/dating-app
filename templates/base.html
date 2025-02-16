@@ -51,12 +51,14 @@
                 <span class="fs-1 text-glow">SparkSync</span>
             </a>
 
+            {% if user.is_authenticated %}
             <!-- Notification Bell Icon -->
             <li class="nav-item px-2">
                 <a class="nav-link" href="{% url 'notificationapp:notifications' %}">
                     <i class="fas fa-bell fa-lg"></i>
                 </a>
             </li>
+            {% endif %}
 
             <!-- Mobile Menu Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
