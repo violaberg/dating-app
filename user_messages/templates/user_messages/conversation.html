@@ -23,12 +23,12 @@
         {% csrf_token %}
         <div class="input-group">
             <input type="text" class="form-control" name="content" placeholder="Type your message..." required>
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="submit" class="btn btn-pink">Send</button>
         </div>
     </form>
 
     <div class="text-center mt-3">
-        <a href="{% url 'messages:inbox' %}" class="btn btn-secondary">Back to Inbox</a>
+        <a href="{% url 'messages:inbox' %}" class="btn btn-pink">Back to Inbox</a>
     </div>
 </div>
 {% endblock %}
