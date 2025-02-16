@@ -220,7 +220,7 @@ strong {
   border: 1px solid var(--light-burgundy)!important;
 }
 
-span {
+.sparks-span {
   color: var(--light-burgundy);
   font-weight: 600;
 }
