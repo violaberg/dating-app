@@ -11,9 +11,9 @@
                         <span>{{ request.sender.username }} wants to chat</span>
                         <div>
                             <a href="{% url 'messages:respond_message_request' request.id 'accept' %}" 
-                               class="btn btn-success btn-sm">Accept</a>
+                               class="btn btn-pink btn-sm">Accept</a>
                             <a href="{% url 'messages:respond_message_request' request.id 'decline' %}" 
-                               class="btn btn-danger btn-sm">Decline</a>
+                               class="btn btn-red btn-sm">Decline</a>
                         </div>
                     </li>
                 {% endfor %}
@@ -24,7 +24,7 @@
     </div>
 
     <div class="text-center mt-3">
-        <a href="{% url 'messages:inbox' %}" class="btn btn-secondary">Back to Inbox</a>
+        <a href="{% url 'messages:inbox' %}" class="btn btn-pink">Back to Inbox</a>
     </div>
 </div>
 {% endblock %}
