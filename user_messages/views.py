@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.contrib import messages
+from django.db.models import Q
 from .models import MessageRequest, Message, BlockedUser, Report, Conversation
 from django.contrib.auth.models import User
 
@@ -112,7 +113,14 @@ def report_message(request, message_id):
 @login_required
 def inbox(request):
     """Displays the user's active conversations."""
-    conversations = Conversation.objects.filter(user1=request.user) | Conversation.objects.filter(user2=request.user)
+    conversations = Conversation.objects.filter(
+        Q(user1=request.user) | Q(user2=request.user)
+    ).distinct()
+
+    # Attach other_user field for easier template rendering
+    for convo in conversations:
+        convo.other_user = convo.user1 if convo.user2 == request.user else convo.user2
+
     return render(request, 'user_messages/inbox.html', {'conversations': conversations})
 
 
