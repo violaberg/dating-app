@@ -4,7 +4,7 @@
 {% if messages %}
     <div class="container mt-3">
         {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            <div id="profile-message-box" class="alert {{ message.tags }} alert-dismissible fade show rounded shadow" role="alert">
                 {{ message }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -15,17 +15,17 @@
     <h1 class="text-center">My Profile</h1>
 
     {% if new_user or not profile.bio %}
-        <div class="alert alert-info text-center">
+        <div class="profile-message-box alert alert-info text-center rounded shadow">
             <p>You haven't set up your profile yet. Please fill in your details below.</p>
         </div>
     {% elif edit_mode %}
-        <div class="alert alert-info text-center">
+        <div class="profile-message-box alert alert-info text-center rounded shadow">
             <p>Edit your details below.</p>
         </div>
     {% endif %}
 
     {% if new_user or not profile.bio or edit_mode %}
-    <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+    <div class="card shadow p-4 mx-auto my-4" style="max-width: 500px;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
@@ -62,7 +62,7 @@
                     rows="2">{{ form.interests.value }}</textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Save Profile</button>
+            <button type="submit" class="btn btn-pink w-100">Save Profile</button>
         </form>
     </div>
 
@@ -144,10 +144,10 @@
                                     placeholder="Type DELETE here">
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-pink" data-bs-dismiss="modal">Cancel</button>
                                 <form method="POST" action="{% url 'profiles:delete_profile' %}" id="deleteAccountForm">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger" id="confirmDeleteBtn" disabled>Delete
+                                    <button type="submit" class="btn btn-red" id="confirmDeleteBtn" disabled>Delete
                                         Account</button>
                                 </form>
                             </div>
