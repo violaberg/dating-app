@@ -36,15 +36,13 @@
                         </button>
                         {% endif %}
 
-                        {% if profile.profile_image %}
-                        <div class="px-1 card-img-top h-100">
-                            <img class="img-fluid" src="{{ profile.profile_image.url }}" alt="{{ profile.user }}">
+                        <div class="text-center">
+                            {% if profile.profile_image and profile.profile_image.url != "/media/profile_pics/default.jpg" %}
+                                <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Profile Picture">
+                            {% else %}
+                                <img src="{% static 'images/profile_placeholder.png' %}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
+                            {% endif %}
                         </div>
-                        {% else %}
-                        <div class="text-center p-3">
-                            <img src="{% static 'images/profile_placeholder.png' %}" class="img-fluid" alt="Profile placeholder">
-                        </div>
-                        {% endif %}
 
                         <div class="card-body p-3">
                             <h5 class="card-title mb-2">{{ profile.user.username }}</h5>
