@@ -62,11 +62,6 @@
                     rows="2">{{ form.interests.value }}</textarea>
             </div>
 
-            <div class="mb-3">
-                <label for="id_relationship_goal" class="form-label">Looking For</label>
-                {{ form.relationship_goal }}
-            </div>
-
             <button type="submit" class="btn btn-primary w-100">Save Profile</button>
         </form>
     </div>
@@ -90,10 +85,28 @@
                     <li class="list-group-item"><strong>Age:</strong> {{ profile.age }}</li>
                     <li class="list-group-item"><strong>Location:</strong> {{ profile.location }}</li>
                     <li class="list-group-item"><strong>Interests:</strong> {{ profile.interests }}</li>
-                    <li class="list-group-item"><strong>Looking for:</strong> {{ profile.get_relationship_goal_display }}</li>
-                    <li class="list-group-item"><strong>Age Preference:</strong> {{ profile.age_preference }}</li>
-                    <li class="list-group-item"><strong>Spark Type:</strong> {{ profile.spark_type }}</li>
-                    <li class="list-group-item"><strong>Gender Preference:</strong> {{ profile.gender_preference }}</li>
+
+                    {% if profile.spark_type %}
+                    <li class="list-group-item"><strong>Looking for:</strong> {{ profile.spark_type.text }}</li>
+                    {% endif %}
+
+                    {% if profile.gender_preferences.exists %}
+                    <li class="list-group-item">
+                        <strong>Interested in:</strong>
+                        {% for pref in profile.gender_preferences.all %}
+                            {{ pref.text }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </li>
+                    {% endif %}
+
+                    {% if profile.age_preferences.exists %}
+                    <li class="list-group-item">
+                        <strong>Age preferences:</strong>
+                        {% for pref in profile.age_preferences.all %}
+                            {{ pref.text }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </li>
+                    {% endif %}
                 </ul>
 
                 <div class="text-center mt-3">
