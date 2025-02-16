@@ -66,10 +66,51 @@ def delete_profile(request):
 
 @login_required
 def matching_profiles(request):
-    """ Display all matching profiles """
-    profiles = Profile.objects.all()
+    user_profile = request.user.profile
+    profiles = Profile.objects.exclude(user=request.user)
+
+    if user_profile.gender_preferences.exists():
+        gender_preferences = user_profile.gender_preferences.values_list('text', flat=True)
+        profiles = profiles.filter(gender__in=[
+            'male' if 'Men' in gender_preferences else None,
+            'female' if 'Women' in gender_preferences else None,
+            'non-binary' if 'Non-binary' in gender_preferences else None,
+            'other' if 'Other' in gender_preferences else None
+        ]).exclude(gender=None)
+
+    if user_profile.age_preferences.exists():
+        age_ranges = []
+        for pref in user_profile.age_preferences.all():
+            if pref.text == '18-24':
+                age_ranges.extend(range(18, 25))
+            elif pref.text == '25-34':
+                age_ranges.extend(range(25, 35))
+            elif pref.text == '35-44':
+                age_ranges.extend(range(35, 45))
+            elif pref.text == '45-54':
+                age_ranges.extend(range(45, 55))
+            elif pref.text == '55+':
+                age_ranges.extend(range(55, 150))  # Using 150 as an upper bound
+        profiles = profiles.filter(age__in=age_ranges)
+
+    if user_profile.spark_type:
+        profiles = profiles.filter(spark_type=user_profile.spark_type)
+
+    profiles = profiles.prefetch_related(
+        'gender_preferences',
+        'age_preferences'
+    ).select_related(
+        'user',
+        'spark_type'
+    )
+
     return render(
-        request, 'profiles/matching_profiles.html', {'profiles': profiles}
+        request,
+        'profiles/matching_profiles.html',
+        {
+            'profiles': profiles,
+            'user_profile': user_profile
+        }
     )
 
 
@@ -82,7 +123,7 @@ def like_profile(request, profile_id):
         try:
             sender = request.user
             recipient_profile = Profile.objects.get(id=profile_id)
-            recipient = recipient_profile.user  
+            recipient = recipient_profile.user
 
             # 🚫 Prevent users from liking their own profile
             if sender == recipient:
@@ -124,11 +165,5 @@ def like_profile(request, profile_id):
 
     return JsonResponse({"success": False, "message": "Invalid request"}, status=400)
 
-
-@login_required
-def notifications_view(request):
-    """ Fetch unread notifications for the logged-in user """
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False)
-    return render(request, "notifications/notifications.html", {"notifications": notifications})
 
 
