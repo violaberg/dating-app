@@ -1,4 +1,7 @@
 from django.contrib import admin
+from django.contrib import messages
+from django.urls import reverse
+from django.shortcuts import redirect
 from .models import Profile
 
 @admin.register(Profile)
@@ -18,4 +21,6 @@ class ProfileAdmin(admin.ModelAdmin):
             user.delete()
         self.message_user(request, f"Successfully deleted {count} profile(s).", messages.SUCCESS)
 
+        return redirect(reverse('admin:profiles_profile_changelist')) # Redirect to profile list view
+    
     delete_selected_profiles.short_description = "Delete selected profiles and users"
