@@ -51,15 +51,6 @@
                 <span class="fs-1 text-glow">SparkSync</span>
             </a>
 
-            {% if user.is_authenticated %}
-            <!-- Notification Bell Icon -->
-            <li class="nav-item px-2">
-                <a class="nav-link" href="{% url 'notificationapp:notifications' %}">
-                    <i class="fas fa-bell fa-lg"></i>
-                </a>
-            </li>
-            {% endif %}
-
             <!-- Mobile Menu Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,6 +76,15 @@
                         <a class="nav-link {% if request.path == 'messages/inbox/' %}active{% endif %}"
                             href="{% url 'messages:inbox' %}">Messages</a>
                     </li>
+
+                    {% if user.is_authenticated %}
+                    <!-- Notification Bell Icon -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'notificationapp:notifications' %}">
+                            <i class="fas fa-bell fa-lg"></i>
+                        </a>
+                    </li>
+                    {% endif %}
 
                     {% if user.is_authenticated %}
                     <li class="nav-item px-2">
