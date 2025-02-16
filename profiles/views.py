@@ -166,10 +166,4 @@ def like_profile(request, profile_id):
     return JsonResponse({"success": False, "message": "Invalid request"}, status=400)
 
 
-@login_required
-def notifications_view(request):
-    """ Fetch unread notifications for the logged-in user """
-    notifications = Notification.objects.filter(recipient=request.user, is_read=False)
-    return render(request, "notifications/notifications.html", {"notifications": notifications})
-
 
