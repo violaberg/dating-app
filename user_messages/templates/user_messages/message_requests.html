@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-center">Message Requests</h2>
+
+    <div class="card shadow p-3">
+        {% if requests %}
+            <ul class="list-group">
+                {% for request in requests %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>{{ request.sender.username }} wants to chat</span>
+                        <div>
+                            <a href="{% url 'messages:respond_message_request' request.id 'accept' %}" 
+                               class="btn btn-success btn-sm">Accept</a>
+                            <a href="{% url 'messages:respond_message_request' request.id 'decline' %}" 
+                               class="btn btn-danger btn-sm">Decline</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-center text-muted">No message requests at the moment.</p>
+        {% endif %}
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{% url 'messages:inbox' %}" class="btn btn-secondary">Back to Inbox</a>
+    </div>
+</div>
+{% endblock %}
