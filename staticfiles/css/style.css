@@ -239,6 +239,10 @@ background: rgb(250, 156, 161);
   background: linear-gradient(180deg, rgba(250, 156, 161, 1) 4%, rgba(251, 219, 218, 1) 32%, rgba(245, 245, 238, 1) 71%);
 }
 
+.placeholder {
+  filter: sepia(85%);
+}
+
 /* Contact Page */
 input, textarea {
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
