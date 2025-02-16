@@ -166,8 +166,8 @@ Adds a soft, romantic touch to features.<br>
 ***Sea Salt (#fafafa)***<br>
 Used for content areas requiring high brightness and clarity
 
-***Parchment (#fbf5df)***<br>
-Main background color, providing a warm, inviting atmosphere while being easier on the eyes
+***Cool Ivory (#fffff0)***<br>
+Main background color, providing a slighty warmer, inviting atmosphere while being easier on the eyes
 
 ![Color palette](assets/colors/sparksync.png)
 
