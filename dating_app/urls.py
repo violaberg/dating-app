@@ -35,6 +35,7 @@ urlpatterns = [
     path('messages/', include('user_messages.urls')),  # path for messages page
     path('profiles/', include('profiles.urls')),  # path for profiles page
     path('contact/', include('contact.urls')),
+    path('notifications/', include('notificationapp.urls')),
 ]
 
 if settings.DEBUG:  # Only serve media files in development mode
