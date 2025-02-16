@@ -121,7 +121,7 @@ h3,
 
 /* Team Page */
 .team-card {
-  border: 1px solid var(--red);
+  border: 1px solid var(--dark-burgundy);
 }
 
 .team-card:hover {
@@ -144,34 +144,6 @@ h3,
   animation: pulse 1s infinite;
 }
 
-.pulsingheart {
-  position: relative;
-  width: 60px;
-  height: 50px;
-}
-
-.pulsingheart:before,
-.pulsingheart:after {
-  position: absolute;
-  content: "";
-  left: 50px;
-  top: 0;
-  width: 50px;
-  height: 80px;
-  background: var(--light-burgundy);
-  border-radius: 50px 50px 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-  animation: pulsecolor 1s infinite;
-}
-
-.pulsingheart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-  animation: pulsecolor 1s infinite;
-}
-
 @keyframes pulse {
   10% {
     transform: scale(1.1)
@@ -185,10 +157,8 @@ h3,
 }
 
 .logo {
-  width: 60px;
-  /* Increase logo size */
   height: auto;
-  /* Keep aspect ratio */
+  width: 60px;
 }
 
 .text-glow {
