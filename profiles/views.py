@@ -9,6 +9,7 @@ from django.contrib.auth import logout
 from django.contrib import messages
 #from notifications.signals import notify
 from django.contrib.auth.models import User
+from notificationapp.models import Notification
 
 
 @login_required
@@ -74,7 +75,7 @@ def matching_profiles(request):
 
 @login_required
 def like_profile(request, profile_id):
-    """ Handles liking/unliking a profile """
+    """ Handles liking/unliking a profile and sends a notification """
     if request.method == "POST":
         icon_class = request.POST.get("icon_classlist_value", "")
 
@@ -83,21 +84,32 @@ def like_profile(request, profile_id):
             recipient_profile = Profile.objects.get(id=profile_id)
             recipient = recipient_profile.user  
 
+            # 🚫 Prevent users from liking their own profile
+            if sender == recipient:
+                return JsonResponse(
+                    {"success": False, "message": "You cannot like your own profile!"},
+                    status=400
+                )
+
             liked = "fa-regular" in icon_class  # Toggle based on current state
             message = (
-                "You liked this profile ❤️"
-                if liked else "You unliked this profile 💔"
+                f"{sender.username} liked your profile ❤️"
+                if liked else f"{sender.username} unliked your profile 💔"
             )
+
+            # ✅ Create a notification only when the profile is liked
+            if liked:
+                Notification.objects.create(
+                    recipient=recipient,
+                    sender=sender,
+                    message=message
+                )
 
             response_data = {
                 "success": True,
                 "liked": liked,
                 "message": message
             }
-            print(
-                "Server Response:",
-                json.dumps(response_data, indent=4)  # Debugging
-            )
             return JsonResponse(response_data)
 
         except Profile.DoesNotExist:
@@ -112,5 +124,11 @@ def like_profile(request, profile_id):
 
     return JsonResponse({"success": False, "message": "Invalid request"}, status=400)
 
+
+@login_required
+def notifications_view(request):
+    """ Fetch unread notifications for the logged-in user """
+    notifications = Notification.objects.filter(recipient=request.user, is_read=False)
+    return render(request, "notifications/notifications.html", {"notifications": notifications})
 
 

@@ -5,15 +5,82 @@
 {% block content %}
 <div class="container-fluid p-0 mt-4">
   <h1 class="text-center">Welcome to the SparkSync!</h1>
-  <p class="col-lg-8 py-3 mx-auto">
-    SparkSync is a dating app that helps you find your perfect match. Our
-    platform is designed to help you connect with others and find someone
-    special. Whether you're looking for a long-term relationship or just want
-    to meet new people, SparkSync is here to help you find what you're looking
-    for.
-  </p>
+  <div class="text-center my-4">
+    <span class="mx-1">❤️</span>
+    <span class="mx-1">❤️</span>
+    <span class="mx-1">❤️</span>
+  </div>
+  <p class="slogan text-center fs-2">" Where Code Meets Chemistry – Bringing People Together Safely and Inclusively"</p>
+  <div class="text-center my-4">
+    <span class="mx-1">❤️</span>
+    <span class="mx-1">❤️</span>
+    <span class="mx-1">❤️</span>
+  </div>
+  <div class="row justify-content-center mt-4">
+    <div class="col-lg-8 py-3 mx-auto">
+      <p class="fs-5">
+        In a world driven by technology, love should be no exception. SparkSync is redefining modern connections — one algorithm at a time.
+        We are on a mission to make digital dating <strong>safe, inclusive, and accessible</strong> for everyone. 
+      </p>
+    </div>
+  </div>
+    <!-- Call To Action -->
+  <div class="container col-xl-10 col-xxl-8">
+    <div class="row align-items-center pb-3">
+      {% if not user.is_authenticated %}
+      <hr class="my-4">
+        <div class="mt-3">
+        <h3 class="fs-2 text-center">Join the Future of Dating</h3>
+        <p class="fs-5">
+            Whether you're a <strong>hopeless romantic</strong>, a <strong>tech enthusiast</strong>, or just looking to meet new people, 
+            SparkSync is your gateway to the <strong>next evolution of online connections.</strong>
+        </p>
+        <p class="slogan fs-2 text-center pb-2">Love has gone digital, but it has never been more human</p>
+        <div class="text-center">
+        <a href="{% url 'account_signup' %}" class="btn-pink btn">Join <span class="fw-bolder">SparkSync</span> Today</a>
+        </div>
+    </div>
+      {% else %}
+      <hr class="my-2">
+        <div class="text-center">
+          <h3 class="mt-4 fs-2">Find your spark</h3>
+          <a class="btn btn-pink rounded my-3" href="{% url 'questionnaire:questionnaire' %}"
+            aria-label="Find matches button">Explore Sparks</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <hr class="my-4">
+  <div class="row mt-4">
+        <div class="col-md-4">
+            <h2 class="fs-3 text-center">Inclusive for All</h2>
+            <p>Love knows no boundaries, and neither do we. Our platform is designed for people of all backgrounds, genders, and orientations.</p>
+        </div>
+        <div class="col-md-4">
+            <h2 class="fs-3 text-center">Safety First</h2>
+            <p>We prioritize your well-being with AI-driven security, profile verification, and user-controlled boundaries.</p>
+        </div>
+        <div class="col-md-4">
+            <h2 class="fs-3 text-center">Smart Matching</h2>
+            <p>Our advanced matchmaking system connects you with people based on shared values, interests, and relationship goals.</p>
+        </div>
+  </div>
+  <hr class="my-4">
+  <div class="row justify-content-center my-4">
+        <div class="col-lg-8">
+            <h3 class="fs-2 text-center pt-3">Why Choose SparkSync?</h3>
+            <p class="fs-5">
+                Unlike traditional dating apps, we blend <strong>data-driven matchmaking</strong> with human-centered design, ensuring meaningful and authentic connections.
+            </p>
+            <ul class="list-group list-group-flush rounded text-start mx-auto w-75">
+                <li class="list-group-item"><strong>❤️ Enhanced Matchmaking:</strong> Find people who truly resonate with you.</li>
+                <li class="list-group-item"><strong>❤️ Personalized Experience:</strong> Customize your preferences and dating journey.</li>
+                <li class="list-group-item"><strong>❤️ Community & Support:</strong> Feel safe, heard, and valued in a respectful space.</li>
+            </ul>
+        </div>
+    </div>
   <!-- Hero Image Carousel -->
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="heroCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
       <div class="carousel-inner rounded shadow">
         <div class="carousel-item active">
           <img
@@ -21,7 +88,7 @@
             class="img-fluid d-block rounded w-100"
             alt="Hero Image 1"
           />
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption">
             <h2 class="slide-heading text-glow">Where Sparks Turn Into Stories</h2>
             <p>Find your perfect match today!</p>
           </div>
@@ -32,7 +99,7 @@
             class="img-fluid d-block rounded w-100"
             alt="Hero Image 2"
           />
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption">
             <h2 class="slide-heading text-glow">Discover New Connections</h2>
             <p>Let us help you spark someone special!</p>
           </div>
@@ -43,7 +110,7 @@
             class="img-fluid d-block rounded w-100"
             alt="Hero Image 3"
           />
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption">
             <h2 class="slide-heading text-glow">Your Journey Begins Here</h2>
             <p>Join SparkSync and start your story today!</p>
           </div>
@@ -67,26 +134,6 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
-    </div>
-  </div>
-  <!-- Call To Action -->
-  <div class="container col-xl-10 col-xxl-8 px-4 py-4">
-    <div class="row align-items-center py-5">
-      {% if not user.is_authenticated %}
-        <div class="text-center">
-          <h3 class="mb-3 fs-2">Sign up today and find your perfect match!</h3>
-          <a class="btn btn-pink rounded my-3 mx-3" href="{% url 'account_login' %}"
-              aria-label="Log in button">Log in</a>
-          <a class="btn btn-pink rounded my-3" href="{% url 'account_signup' %}"
-              aria-label="Sign up button">Create Profile</a>
-        </div>
-      {% else %}
-        <div class="text-center">
-          <h3 class="mb-3 fs-2">Find your spark</h3>
-          <a class="btn btn-pink rounded my-3" href="{% url 'questionnaire:questionnaire' %}"
-            aria-label="Find matches button">Explore Sparks</a>
-        </div>
-      {% endif %}
     </div>
   </div>
 {% endblock %}
