@@ -215,6 +215,30 @@ strong {
   z-index: 1000;
 }
 
+/* Sparks Page */
+.spark-card {
+  border: 1px solid var(--light-burgundy)!important;
+}
+
+span {
+  color: var(--light-burgundy);
+  font-weight: 600;
+}
+
+.username {
+  color: var(--red);
+  font-family: var(--font-great-vibes);
+}
+
+.fa-heart {
+  color: var(--red);
+}
+
+.favourite-profile {
+background: rgb(250, 156, 161);
+  background: linear-gradient(180deg, rgba(250, 156, 161, 1) 4%, rgba(251, 219, 218, 1) 32%, rgba(245, 245, 238, 1) 71%);
+}
+
 /* Contact Page */
 input, textarea {
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
