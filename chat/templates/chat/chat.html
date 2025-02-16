@@ -1,9 +1,18 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-    What chat room would you like to enter?<br>
-    <input id="room-name-input" type="text" size="100"><br>
-    <input id="room-name-submit" type="button" value="Enter">
+<div class="container py-4">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <h1 class="text-center">What chat room would you like to enter?</h1>
+                <input id="room-name-input" type="text" class="py-2 w-100 rounded shadow" placeholder="Enter a room name">
+                <div class="text-center">
+                    <input id="room-name-submit" type="button" class="btn btn-pink mt-4" value="Enter">
+                </div>
+            </div>
+        </div>
+</div>
 
     <script>
         document.querySelector('#room-name-input').focus();

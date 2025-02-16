@@ -236,7 +236,6 @@ A romantic, script-style font used for logos and special headings. It adds an el
 
 ## **Credits**
 - [Floating Love Heart Effect](https://codepen.io/1AHV/pen/oPvwQw)
-- [Pulsing Hearts](https://codepen.io/puresick1/pen/popjyG)
 - [Coolors color palette generator](https://coolors.co/)
 - [Background pattern](https://devsnap.me/css-background-patterns?)
 - [Hero Image](https://unsplash.com/photos/person-holding-fire-cracker-shallow-focus-photography-PAykYb-8Er8)
