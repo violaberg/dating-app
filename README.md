@@ -38,40 +38,59 @@
 * [**Testing**](#testing)
 * [**Team**](#team)
 
-## **About the Submission**  
+## **About the Submission**
 
 ### **Intro**
 SparkSync is a modern dating application designed to help people form meaningful connections through shared interests, preferences, and compatibility matching. The platform emphasizes authentic interactions and provides a safe, engaging environment for users to meet potential partners.
 
-### **Deployment**   
+### **Deployment**
 [Deployed link](https://sparksync-7438f8dc8240.herokuapp.com/)
 
 [Kanban board](https://github.com/users/violaberg/projects/12)
 
 ### **Goal**
-To create an intuitive, inclusive and secure dating platform that focuses on meaningful connections by matching users based on shared interests, values, and compatibility factors, while providing real-time communication features for natural conversation development.    
+The primary goal of SparkSync is to create a digital dating platform that excels in:
+
+*   **Meaningful Connections:** Fostering genuine relationships, not just superficial interactions.
+*   **User Safety:**  Prioritizing user safety through robust security measures and a trustworthy environment.
+*   **Inclusivity:**  Creating a welcoming space for users of all backgrounds, genders, and sexual orientations.
+*   **Accessibility:**  Providing a user-friendly and intuitive experience for everyone.
+
 
 ### **Problem Statement**
-Many existing dating apps prioritize superficial connections and quick judgments based primarily on photos. Users often struggle to find meaningful matches that align with their interests and values, leading to unsatisfying experiences and short-lived connections. Additionally, many platforms lack real-time communication features that could help foster more natural relationship development.
+Traditional dating apps often fall short in several key areas:
+
+*   **Superficiality:**  Overemphasis on physical appearance, leading to shallow connections.
+*   **Safety Concerns:** Insufficient verification and safety protocols, exposing users to risks.
+*   **Lack of Inclusivity:**  Not catering to the diverse needs and preferences of all users, particularly the LGBTQ+ community.
+*   **Ineffective Matching:**  Poorly designed algorithms that result in mismatched connections and user dissatisfaction.
+*   **Poor User Experience:** Confusing interfaces and difficult navigation, hindering the overall experience.
+
+
 
 ### **Objective(s)**
-- Create a user-friendly platform for relationship-seeking individuals
-- Implement a robust matching system based on shared interests and compatibility
-- Provide secure, real-time chat functionality for matched users
-- Enable users to create detailed profiles that showcase their personality and interests
-- Ensure user privacy and data security throughout the platform
-- Facilitate meaningful connections through interactive features and clear communication channels
+
+*   **Develop a robust matching algorithm:** Utilize user-provided data (questionnaire responses, preferences, and profile information) to connect individuals with high compatibility potential.
+*   **Implement strong security features:** Include profile verification, reporting mechanisms, and data encryption to ensure user safety and data protection.
+*   **Design an intuitive and accessible user interface:**  Create a clean, user-friendly design across all application pages that is accessible and enjoyable to use.
+*   **Foster a welcoming and inclusive community:** Promote respectful interactions and provide a platform that is inclusive of all users, regardless of background, gender, or sexual orientation.
+*   **Enable customizable and detailed user profiles:** Allow users to fully express their individuality and preferences through comprehensive profile fields.
+*   **Provide multiple communication channels:** Offer a contact form for user inquiries and support, with a plan for future in-app chat functionality for matched users.
 
 ### **Target Audience**
-- Singles who are seeking relationships
-- Users who value personality and shared interests over purely physical attributes
-- Individuals comfortable with technology and online communication
-- People looking for a more authentic dating experience than traditional swipe-based apps
-- Users who prioritize safety and privacy in their online dating experience
+SparkSync is designed for adults (18+) seeking various types of connections, including:
+
+*   **Individuals Seeking Long-Term Relationships:** Those looking for committed, lasting partnerships.
+*   **People Interested in Casual Dating:**  Users who want to meet new people and explore connections without immediate long-term commitments.
+*   **Tech-Savvy Individuals:**  People comfortable using online platforms and apps for social interaction.
+*   **Members of the LGBTQ+ Community:**  The platform is built to be fully inclusive and welcoming to all sexual orientations and gender identities.
+*   **Users Who Value Safety and Privacy:** Individuals who prioritize a secure and trustworthy online dating experience.
+*   **Newcomers to Online Dating:**  The intuitive design makes it easy for those unfamiliar with online dating to get started.
+* **Hopeless romantics:** Providing an experience that goes further than surface level.
 
 ## **Pages**
 
-## **Tech Stack**  
+## **Tech Stack**
 
 ### **Languages & Frameworks**
 
@@ -218,6 +237,7 @@ A romantic, script-style font used for logos and special headings. It adds an el
 - [Pulsing Hearts](https://codepen.io/puresick1/pen/popjyG)
 - [Coolors color palette generator](https://coolors.co/)
 - [Background pattern](https://devsnap.me/css-background-patterns?)
+- [Hero Image](https://unsplash.com/photos/person-holding-fire-cracker-shallow-focus-photography-PAykYb-8Er8)
 
 ## **Testing**
 
