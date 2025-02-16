@@ -7,15 +7,17 @@
         <div class="col-md-10 col-lg-8 mx-auto">
             <div class="card shadow p-3">
                 <div class="chat-box" style="max-height: 400px; overflow-y: auto;">
-                    {% for message in messages %}
-                        <div class="mb-2 {% if message.sender == request.user %}text-end{% else %}text-start{% endif %}">
-                            <span class="badge {% if message.sender == request.user %}bg-primary{% else %}bg-secondary{% endif %}">
-                                {{ message.content }}
-                            </span>
-                            <small class="text-muted">{{ message.created_at|date:"H:i" }}</small>
-                        </div>
+                    {% for chat_message in chat_messages %}
+                    <div
+                        class="mb-2 {% if chat_message.sender == request.user %}text-end{% else %}text-start{% endif %}">
+                        <span
+                            class="badge {% if chat_message.sender == request.user %}bg-primary{% else %}bg-secondary{% endif %}">
+                            {{ chat_message.content }}
+                        </span>
+                        <small class="text-muted">{{ chat_message.created_at|date:"H:i" }}</small>
+                    </div>
                     {% empty %}
-                        <p class="text-center text-muted">No messages yet. Start the conversation!</p>
+                    <p class="text-center text-muted">No messages yet. Start the conversation!</p>
                     {% endfor %}
                 </div>
             </div>
