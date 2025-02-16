@@ -102,11 +102,13 @@ WSGI_APPLICATION = 'dating_app.wsgi.application'
 
 ASGI_APPLICATION = 'dating_app.asgi.application'
 
+REDIS_URL = os.getenv("REDISCLOUD_URL", "redis://localhost:6379")
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(os.getenv('REDISCLOUD_URL'))],
+            "hosts": [(os.getenv('REDIS_URL'), 6379)],
         },
     },
 }
