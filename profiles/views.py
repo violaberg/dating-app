@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 import json
 from django.http import JsonResponse
 
@@ -10,6 +11,20 @@ from django.contrib import messages
 #from notifications.signals import notify
 from django.contrib.auth.models import User
 from notificationapp.models import Notification
+
+
+@login_required
+@staff_member_required
+def delete_user_profile(request, user_id):
+    """ Allows admin to delete a user profile and associated user account """
+    user = get_object_or_404(User, id=user_id)
+
+    if request.method == 'POST':
+        user.delete()
+        messages.success(request, f'Profile for {user.username} has been deleted.')
+        return redirect('admin:index')
+
+    return render(request, 'profiles/confirm_delete.html', {'user': user})
 
 
 @login_required
