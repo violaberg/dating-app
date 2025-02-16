@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import QuestionnaireForm
 from .models import UserResponse
 
+
 @login_required
 def questionnaire(request):
     # Check if user has already filled out the questionnaire
