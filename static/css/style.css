@@ -44,7 +44,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   color: var(--light-burgundy);
 }
 
@@ -215,7 +216,7 @@ strong {
   color: var(--dark-burgundy);
 }
 
-/* FAQ Page */
+/* FAQ Page & Privacy Policy */
 .faq-link {
   color: var(--light-burgundy)!important;
   font-family: var(--font-montserrat);
@@ -224,6 +225,10 @@ strong {
 .faq-link:hover {
   color: var(--dark-burgundy);
   font-weight: 500;
+}
+
+.policy-link {
+  color: var(--light-burgundy)!important;
 }
 
 /* Profile Page */
