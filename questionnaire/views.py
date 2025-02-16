@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import QuestionnaireForm
 from .models import UserResponse
 
+
 @login_required
 def questionnaire(request):
     # Check if user has already filled out the questionnaire
@@ -16,10 +17,15 @@ def questionnaire(request):
             response = form.save(commit=False)
             response.user = request.user
             response.save()
-            # Save many-to-many fields
             form.save_m2m()
+            profile = request.user.profile
+            profile.spark_type = response.spark_type
+            profile.save()
+            profile.gender_preferences.set(response.gender_preferences.all())
+            profile.age_preferences.set(response.age_preferences.all())
+
             messages.success(request, 'Your preferences have been saved!')
-            return redirect('profiles:profile')
+            return redirect('profiles:matching_profiles')
 
     return render(request, 'questionnaire/questionnaire.html', {
         'form': form,
