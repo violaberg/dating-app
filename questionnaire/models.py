@@ -1,59 +1,37 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+class Question(models.Model):
+    QUESTION_TYPES = (
+        ('SINGLE', 'Single Choice'),
+        ('MULTIPLE', 'Multiple Choice'),
+    )
 
-
-class QuestionCategory(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True, null=True)
+    question_text = models.TextField()  # Changed from text to question_text
+    question_type = models.CharField(max_length=50)  # Changed max_length to 50
+    category_id = models.BigIntegerField()  # Added to match the database
+    order = models.IntegerField(default=0)
 
     class Meta:
-        verbose_name_plural = "Question Categories"
-
-    def __str__(self):
-        return self.name
-
-
-class Question(models.Model):
-    category = models.ForeignKey(QuestionCategory, on_delete=models.CASCADE)
-    question_text = models.TextField()
-    question_type = models.CharField(
-        max_length=50,
-        choices=[
-            ("single", "Single Choice"),
-            ("multiple", "Multiple Choice"),
-            ("text", "Text"),
-        ],
-        default="single",
-    )
+        ordering = ['order']
 
     def __str__(self):
         return self.question_text
 
-
-class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer_text = models.CharField(max_length=200)
+class Choice(models.Model):
+    question = models.ForeignKey(Question, related_name='choices', on_delete=models.CASCADE)
+    text = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.answer_text
-
+        return self.text
 
 class UserResponse(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer = models.ForeignKey(
-    Answer,
-    on_delete=models.CASCADE,
-    blank=True,
-    null=True
-)
-
-    text_response = models.TextField(blank=True, null=True)
-
-    class Meta:
-        unique_together = ('user', 'question')
+    spark_type = models.ForeignKey(Choice, related_name='spark_responses', on_delete=models.SET_NULL, null=True, blank=True)
+    gender_preferences = models.ManyToManyField(Choice, related_name='gender_responses', blank=True)
+    age_preferences = models.ManyToManyField(Choice, related_name='age_responses', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.question.question_text}"
+        return f"Responses for {self.user.username}"
