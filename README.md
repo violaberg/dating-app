@@ -62,7 +62,7 @@ Traditional dating apps often fall short in several key areas:
 
 *   **Superficiality:**  Overemphasis on physical appearance, leading to shallow connections.
 *   **Safety Concerns:** Insufficient verification and safety protocols, exposing users to risks.
-*   **Lack of Inclusivity:**  Not catering to the diverse needs and preferences of all users, particularly the LGBTQ+ community.
+*   **Lack of Inclusivity:**  Not catering to the diverse needs and preferences of all users.
 *   **Ineffective Matching:**  Poorly designed algorithms that result in mismatched connections and user dissatisfaction.
 *   **Poor User Experience:** Confusing interfaces and difficult navigation, hindering the overall experience.
 
@@ -83,7 +83,6 @@ SparkSync is designed for adults (18+) seeking various types of connections, inc
 *   **Individuals Seeking Long-Term Relationships:** Those looking for committed, lasting partnerships.
 *   **People Interested in Casual Dating:**  Users who want to meet new people and explore connections without immediate long-term commitments.
 *   **Tech-Savvy Individuals:**  People comfortable using online platforms and apps for social interaction.
-*   **Members of the LGBTQ+ Community:**  The platform is built to be fully inclusive and welcoming to all sexual orientations and gender identities.
 *   **Users Who Value Safety and Privacy:** Individuals who prioritize a secure and trustworthy online dating experience.
 *   **Newcomers to Online Dating:**  The intuitive design makes it easy for those unfamiliar with online dating to get started.
 * **Hopeless romantics:** Providing an experience that goes further than surface level.
