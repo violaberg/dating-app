@@ -233,7 +233,8 @@ strong {
 }
 
 /* Profile Page */
-#profile-message-box {
+#profile-message-box,
+.profile-message-box {
   background-color: var(--seasalt);
   border: 1px solid var(--light-burgundy);
   color: var(--charcoal);
