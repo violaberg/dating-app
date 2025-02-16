@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-center">Chat with {{ other_user.username }}</h2>
+
+    <div class="card shadow p-3">
+        <div class="chat-box" style="max-height: 400px; overflow-y: auto;">
+            {% for message in messages %}
+                <div class="mb-2 {% if message.sender == request.user %}text-end{% else %}text-start{% endif %}">
+                    <span class="badge {% if message.sender == request.user %}bg-primary{% else %}bg-secondary{% endif %}">
+                        {{ message.content }}
+                    </span>
+                    <small class="text-muted">{{ message.created_at|date:"H:i" }}</small>
+                </div>
+            {% empty %}
+                <p class="text-center text-muted">No messages yet. Start the conversation!</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Message Form -->
+    <form method="POST" action="{% url 'messages:send_message' other_user.id %}" class="mt-3">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" class="form-control" name="content" placeholder="Type your message..." required>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+    </form>
+
+    <div class="text-center mt-3">
+        <a href="{% url 'messages:inbox' %}" class="btn btn-secondary">Back to Inbox</a>
+    </div>
+</div>
+{% endblock %}

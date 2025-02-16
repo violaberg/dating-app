@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-center">Inbox</h2>
+
+    <div class="card shadow p-3">
+        {% if conversations %}
+            <ul class="list-group">
+                {% for convo in conversations %}
+                    {% with other_user=convo.user1 if convo.user2 == request.user else convo.user2 %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="{% url 'messages:get_conversation' other_user.id %}" class="text-decoration-none">
+                            <strong>{{ other_user.username }}</strong>
+                        </a>
+                        <span class="badge bg-primary">{{ convo.messages.count }}</span>
+                    </li>
+                    {% endwith %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-center text-muted">No active conversations.</p>
+        {% endif %}
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{% url 'messages:message_requests' %}" class="btn btn-secondary">View Message Requests</a>
+    </div>
+</div>
+{% endblock %}
