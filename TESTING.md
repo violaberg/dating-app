@@ -114,16 +114,16 @@ The website was tested on various devices using Chrome DevTools and real-life de
 
 | Element                | Action      | Expected Result                                         | Pass/Fail         |
 | ---------------------- | ----------- | ------------------------------------------------------- | ----------------- |
-| Logo                   | Click       | Redirect to Home page                                   | <mark></mark> |
-| Home Link              | Click       | Redirect to Home page                                   | <mark></mark> |
-| Register Link          | Click       | Redirect to sign up page                                | <mark></mark> |
-| Log in Link            | Click       | Redirect to sign in page                                | <mark></mark> |
-| Log out Link           | Click       | Redirect to log out page                                | <mark></mark> |
-| Hamburger Menu         | Click       | Render a dropdown menu of all links                     | <mark></mark> |
-| Footer Socials         | Click       | Redirect in a new tab to all respective media platforms | <mark></mark> |
-| Register Link          | Display     | Render for non authenticated users                      | <mark></mark> |
-| Log in Link            | Display     | Render for non authenticated users                      | <mark></mark> |
-| Log out Link           | Display     | Render only if user is authenticated                    | <mark></mark> |
+| Logo                   | Click       | Redirect to Home page                                   | <mark>PASS</mark> |
+| Home Link              | Click       | Redirect to Home page                                   | <mark>PASS</mark> |
+| Register Link          | Click       | Redirect to sign up page                                | <mark>PASS</mark> |
+| Log in Link            | Click       | Redirect to sign in page                                | <mark>PASS</mark> |
+| Log out Link           | Click       | Redirect to log out page                                | <mark>PASS</mark> |
+| Hamburger Menu         | Click       | Render a dropdown menu of all links                     | <mark>PASS</mark> |
+| Footer Socials         | Click       | Redirect in a new tab to all respective media platforms | <mark>PASS</mark> |
+| Register Link          | Display     | Render for non authenticated users                      | <mark>PASS</mark> |
+| Log in Link            | Display     | Render for non authenticated users                      | <mark>PASS</mark> |
+| Log out Link           | Display     | Render only if user is authenticated                    | <mark>PASS</mark> |
 
 ### Contact Page
 
@@ -144,28 +144,28 @@ The website was tested on various devices using Chrome DevTools and real-life de
 
 | Element       | Action         | Expected Result                             | Pass/Fail         |
 | ------------- | -------------- | ------------------------------------------- | ----------------- |
-| Form(Valid)   | Submit         | Redirected to Home page                     | <mark></mark> |
-| Form(Invalid) | Submit         | Error Context rendered to UI                | <mark></mark> |
-| Login Link    | Click          | Redirect to Login Page                      | <mark></mark> |
-| Logout Button   | Hover/Focus  | Change Background colour                    | <mark></mark> |
+| Form(Valid)   | Submit         | Redirected to Home page                     | <mark>PASS</mark> |
+| Form(Invalid) | Submit         | Error Context rendered to UI                | <mark>PASS</mark> |
+| Login Link    | Click          | Redirect to Login Page                      | <mark>PASS</mark> |
+| Logout Button   | Hover/Focus  | Change Background colour                    | <mark>PASS</mark> |
 
 ### Login Page
 
 | Element       | Action         | Expected Result                             | Pass/Fail         |
 | ------------- | -------------- | ------------------------------------------- | ----------------- |
-| Form(Valid)   | Submit         | Redirected to Home page                     | <mark></mark> |
-| Form(Valid)   | Submit         | Sign up in Notification received            | <mark></mark> |
-| Form(Invalid) | Submit         | Error Context rendered to UI                | <mark></mark> |
-| Sign Up Link | Click           | Redirect to Sign Up Page                    | <mark></mark> |
-| Login Button  | Hover/Focus    | Change Background colour                    | <mark></mark> |
+| Form(Valid)   | Submit         | Redirected to Home page                     | <mark>PASS</mark> |
+| Form(Valid)   | Submit         | Sign up in Notification received            | <mark>PASS</mark> |
+| Form(Invalid) | Submit         | Error Context rendered to UI                | <mark>PASS</mark> |
+| Sign Up Link | Click           | Redirect to Sign Up Page                    | <mark>PASS</mark> |
+| Login Button  | Hover/Focus    | Change Background colour                    | <mark>PASS</mark> |
 
 ### Log Out Page
 
 | Element       | Action         | Expected Result                                | Pass/Fail         |
 | ------------- | -------------- | ---------------------------------------------- | ----------------- |
-| Logout Button | Click          | User session is safely finished                | <mark></mark> |
-| Logout Button | Click          | Redirected to Home page                        | <mark></mark> |
-| Form Button   | Hover/Focus    | Change Background colour                       | <mark></mark> |
+| Logout Button | Click          | User session is safely finished                | <mark>PASS</mark> |
+| Logout Button | Click          | Redirected to Home page                        | <mark>PASS</mark> |
+| Form Button   | Hover/Focus    | Change Background colour                       | <mark>PASS</mark> |
 
 ### Error Pages
 
