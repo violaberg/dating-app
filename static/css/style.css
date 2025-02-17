@@ -137,6 +137,15 @@ h3,
   transform: scale(1.03);
 }
 
+.team-p {
+  font-weight: 500;
+}
+
+.phrase {
+  color: var(--red);
+  font-family: var(--font-great-vibes);
+}
+
 .wrapper {
   position: absolute;
   margin-left: 10px;
@@ -236,7 +245,7 @@ strong {
 
 .favourite-profile {
 background: rgb(250, 156, 161);
-  background: linear-gradient(180deg, rgba(250, 156, 161, 1) 4%, rgba(251, 219, 218, 1) 32%, rgba(245, 245, 238, 1) 71%);
+background: linear-gradient(180deg, rgba(250, 156, 161, 1) 4%, rgba(251, 219, 218, 1) 32%, rgba(245, 245, 238, 1) 71%);
 }
 
 .placeholder {
