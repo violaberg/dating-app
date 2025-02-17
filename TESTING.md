@@ -73,11 +73,19 @@ The website was tested on various devices using Chrome DevTools and real-life de
 | Page            |  Screenshot  |
 | --------------- | ------------ |
 | ***Desktop***   |              |
-| Home            | <details><summary>Home</summary><img src="#"></details> |
-| Contact         | <details><summary>Contact</summary><img src="#"></details> |
-| Sign Up         | <details><summary>Sign Up</summary><img src="#"></details> |
-| Login           | <details><summary>Login</summary><img src="#"></details> |
-| Logout          | <details><summary>Logout</summary><img src="#"></details> |
+| Home            | <details><summary>Home</summary><img src="assets/testing/lhouse/desktop-home.png"></details> |
+| Chat            | <details><summary>Chat</summary><img src="assets/testing/lhouse/desktop-chat.png"></details> |
+| Contact         | <details><summary>Contact</summary><img src="assets/testing/lhouse/desktop-contact.png"></details> |
+| Inbox            | <details><summary>Inbox</summary><img src="assets/testing/lhouse/desktop-inbox.png"></details> |
+| Message Req            | <details><summary>Message Req</summary><img src="assets/testing/lhouse/desktop-message-reg.png"></details> |
+| Sparks            | <details><summary>Sparks</summary><img src="assets/testing/lhouse/desktop-sparks.png"></details> |
+| Team Page            | <details><summary>Team Page</summary><img src="assets/testing/lhouse/desktop-team.png"></details> |
+| FAQ Page        | <details><summary>FAQ Page</summary><img src="assets/testing/lhouse/desktop-faq.png"></details> |
+| Policy Page            | <details><summary>Policy Page</summary><img src="assets/testing/lhouse/desktop-policy.png"></details> |
+| Create Profile         | <details><summary>Create Profile</summary><img src="assets/testing/lhouse/desktop-reg.png"></details> |
+| Profile            | <details><summary>Profile</summary><img src="assets/testing/lhouse/desktop-profile.png"></details> |
+| Login           | <details><summary>Login</summary><img src="assets/testing/lhouse/desktop-login.png"></details> |
+| Logout          | <details><summary>Logout</summary><img src="assets/testing/lhouse/desktop-logout.png"></details> |
 |  |  |
 
 <br>
@@ -85,12 +93,19 @@ The website was tested on various devices using Chrome DevTools and real-life de
 | Page            |  Screenshot  |
 | --------------- | ------------ |
 | ***Mobile***   |              |
-| Home            | <details><summary>Home</summary><img src="#"></details> |
-| Contact         | <details><summary>Contact</summary><img src="#"></details> |
-| Sign Up         | <details><summary>Sign Up</summary><img src="#"></details> |
-| Login           | <details><summary>Login</summary><img src="#"></details> |
-| Logout          | <details><summary>Logout</summary><img src="#"></details> |
-
+| Home            | <details><summary>Home</summary><img src="assets/testing/lhouse/mobile-home.png"></details> |
+| Chat            | <details><summary>Chat</summary><img src="assets/testing/lhouse/mobile-chat.png"></details> |
+| Contact         | <details><summary>Contact</summary><img src="assets/testing/lhouse/mobile-contact.png"></details> |
+| Inbox            | <details><summary>Inbox</summary><img src="assets/testing/lhouse/mobile-inbox.png"></details> |
+| Message Req            | <details><summary>Message Req</summary><img src="assets/testing/lhouse/mobile-message-reg.png"></details> |
+| Sparks            | <details><summary>Sparks</summary><img src="assets/testing/lhouse/mobile-sparks.png"></details> |
+| Team Page            | <details><summary>Team Page</summary><img src="assets/testing/lhouse/mobile-team.png"></details> |
+| FAQ Page        | <details><summary>FAQ Page</summary><img src="assets/testing/lhouse/mobile-faq.png"></details> |
+| Policy Page            | <details><summary>Policy Page</summary><img src="assets/testing/lhouse/mobile-policy.png"></details> |
+| Create Profile         | <details><summary>Create Profile</summary><img src="assets/testing/lhouse/mobile-reg.png"></details> |
+| Profile            | <details><summary>Profile</summary><img src="assets/testing/lhouse/mobile-profile.png"></details> |
+| Login           | <details><summary>Login</summary><img src="assets/testing/lhouse/mobile-login.png"></details> |
+| Logout          | <details><summary>Logout</summary><img src="assets/testing/lhouse/mobile-logout.png"></details> |
 |  |  |
 
 ## **Manual Testing**

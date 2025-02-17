@@ -3,25 +3,25 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block head_title %}
-    {% trans "Sign Out" %}
+    {% trans "Log Out" %}
 {% endblock head_title %}
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-lg-6 col-xl-4 text-center mx-auto">
             <header class="mt-4">
-                <h1>{% trans "Sign Out" %}</h1>
+                <h1>{% trans "Log Out" %}</h1>
             </header>
             {% element p %}
-                {% trans 'Are you sure you want to sign out?' %}
+                {% trans 'Are you sure you want to log out?' %}
             {% endelement %}
             {% url 'account_logout' as action_url %}
             <form method="post" action="{{ action_url }}" class="shadow p-3 border rounded">
                 {% csrf_token %}
                 {{ form|crispy }}
                 {{ redirect_field }}
-                <button type="submit" class="btn btn-pink mt-3" aria-label="Sign out button">
-                    {% trans 'Sign Out' %}
+                <button type="submit" class="btn btn-pink mt-3" aria-label="Log out button">
+                    {% trans 'Log Out' %}
                 </button>
             </form>
         </div>
