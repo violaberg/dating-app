@@ -12,17 +12,6 @@
         </div>
     </div>
 
-    <!-- Notifications based on this article: https://medium.com/star-gazers/how-to-add-notifications-to-django-app-74df1dac984e -->
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        {% for notification in user.notifications.unread %}
-            <div>
-            Message from <b>{{ notification.actor }}</b>
-                <button class="dropdown-item" type="button">{{ notification.description }}</button>
-            </div>
-            <div class="dropdown-divider"></div>
-        {% endfor %}
-    </div>
-
     <div class="row">
         <div class="product-container">
             <div id="profile-message-box" class="alert alert-info text-center rounded shadow p-3"></div>
@@ -36,21 +25,21 @@
                         </button>
                         {% endif %}
 
-						{% if profile.profile_image %}
-						<div class="px-1 card-img-top h-100">
-							<img class="img-fluid"
-								 src="{{ profile.profile_image.url }}"
-								 alt="{{ profile.user }}"
-								 onerror="console.error('Failed to load image:', this.src);">
-						</div>
-						{% else %}
-							<div class="text-center p-3">
-								<img src="{% static 'images/profile_placeholder.png' %}"
-									class="img-fluid"
-									alt="Profile placeholder"
-									onerror="console.error('Failed to load placeholder:', this.src);">
-							</div>
-						{% endif %}
+                        {% if profile.profile_image %}
+                        <div class="px-1 card-img-top h-100">
+                            <img class="img-fluid"
+                                 src="{{ profile.profile_image.url }}"
+                                 alt="{{ profile.user }}"
+                                 onerror="console.error('Failed to load image:', this.src);">
+                        </div>
+                        {% else %}
+                            <div class="text-center p-3">
+                                <img src="{% static 'images/profile_placeholder.png' %}"
+                                    class="img-fluid"
+                                    alt="Profile placeholder"
+                                    onerror="console.error('Failed to load placeholder:', this.src);">
+                            </div>
+                        {% endif %}
 
                         <div class="card-body p-3">
                             <h5 class="username fs-3 text-center card-title my-2">{{ profile.user.username }}</h5>
@@ -70,6 +59,13 @@
                                 <small><span class="sparks-span fs-6">Bio:</span> {{ profile.bio|truncatechars:100 }}</small>
                             </p>
                             {% endif %}
+                            
+                            <!-- Report Profile Button -->
+                            {% if request.user.is_authenticated and request.user != profile.user %}
+                            <button class="btn btn-danger report-profile mt-2" data-profile-id="{{ profile.id }}" data-bs-toggle="modal" data-bs-target="#reportModal">
+                                Report Profile
+                            </button>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -83,11 +79,34 @@
     </div>
 </div>
 
+<!-- Report Profile Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reportModalLabel">Report Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm" method="POST" action="{% url 'profiles:report_profile' 0 %}">
+                    {% csrf_token %}
+                    <input type="hidden" id="reportedProfileId" name="profile_id">
+                    <label for="reportReason" class="form-label">Reason for reporting:</label>
+                    <textarea class="form-control" id="reportReason" name="reason" rows="3" required></textarea>
+                    <div class="mt-3 text-end">
+                        <button type="submit" class="btn btn-danger">Submit Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
-    console.log('JS file working - like profile');
+    console.log('JS file working - like & report profile');
 
     $(document).ready(function(){
+        // Like Profile Functionality
         $('.favourite-profile').click(
             function(e) {
                 let profile_id = $(this).attr('data-profile-item');
@@ -105,17 +124,11 @@
                     success: function (result) {
                         console.log("Server Response:", result);
 
-                        // Check if the request was successful
                         if (result.success) {
                             let messageBox = $("#profile-message-box");
-
-                            // Update the message box text with the server's message
                             messageBox.text(result.message);
-
-                            // Make the message box visible
                             messageBox.fadeIn().delay(2000).fadeOut();
-
-                            // Toggle the heart icon (like/unlike)
+                            
                             let icon = that.find('.fa-heart');
                             if (result.liked) {
                                 icon.removeClass('fa-regular').addClass('fa-solid');
@@ -126,10 +139,18 @@
                             console.error("Error: " + result.message);
                         }
                     },
-
                 });
             }
         );
+
+        // Handle Report Button Click
+        $('.report-profile').click(function() {
+            let profileId = $(this).data('profile-id');
+            $('#reportedProfileId').val(profileId);
+            let reportForm = $('#reportForm');
+            let reportUrl = "{% url 'profiles:report_profile' 0 %}".replace('/0/', '/' + profileId + '/');
+            reportForm.attr('action', reportUrl);
+        });
     });
 
 </script>
