@@ -39,7 +39,7 @@ CSS was validated using [Jigsaw W3](https://jigsaw.w3.org/css-validator/)
 
 |   PAGE                                     |  VALIDATOR SCREENSHOT                                     |   RESULT    |
 |--------------------------------------------|-----------------------------------------------------------|-------------|
-| style.css                                |<details><summary>style.css</summary><img src="#"></details>| <mark></mark> |
+| style.css                                |<details><summary>style.css</summary><img src="#"></details>| <mark>PASS</mark> |
 
 ### **JavaScript**
 
