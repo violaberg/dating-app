@@ -78,11 +78,11 @@
                         <a class="nav-link {% if request.path == '/chat/' %}active{% endif %}"
                             href="{% url 'chat' %}">Sparky Chat</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item px-2">
                         <a class="nav-link {% if request.path == 'messages/inbox/' %}active{% endif %}"
                             href="{% url 'messages:inbox' %}">Messages</a>
                     </li>
-                    {% endif %}
 
                     {% if user.is_authenticated %}
                     <!-- Notification Bell Icon -->
