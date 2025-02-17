@@ -75,7 +75,7 @@
                     </li>
                     <li class="nav-item px-2">
                         <a class="nav-link {% if request.path == '/chat/' %}active{% endif %}"
-                            href="{% url 'chat' %}">Sparky Chat</a>
+                            href="{% url 'chat' %}">Chat</a>
                     </li>
                     <li class="nav-item px-2">
                         <a class="nav-link {% if request.path == 'messages/inbox/' %}active{% endif %}"
@@ -133,11 +133,11 @@
             <span class="copyright fs-4 mb-1">&copy; SparkSync</span>
             <p class="pb-2">All rights reserved</p>
             <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
-                <a class="btn btn-pink rounded mt-3 mx-2 fs-6 text-decoration-none" href="{% url 'contact' %}"
+                <a class="btn btn-pink rounded mt-3 mx-3 fs-6 text-decoration-none" href="{% url 'contact' %}"
                     aria-label="Brings to Contact Page">Contact Us</a>
                 <a class="btn btn-pink rounded mt-3 fs-6 text-decoration-none" href="{% url 'faq' %}"
                     aria-label="Brings to FAQ Page">FAQ</a>
-                <a class="btn btn-pink rounded mt-3 mx-2 fs-6 text-decoration-none" href="{% url 'team' %}"
+                <a class="btn btn-pink rounded mt-3 mx-3 fs-6 text-decoration-none" href="{% url 'team' %}"
                     aria-label="Brings to Team Page">Meet the Team</a>
                 <a class="btn btn-pink rounded mt-3 fs-6 text-decoration-none" href="{% url 'policy' %}"
                     aria-label="Brings to Privacy Policy Page">Privacy Policy</a>

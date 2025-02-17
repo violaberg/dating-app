@@ -18,6 +18,7 @@
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
                 {% for profile in profiles %}
                 <div class="col mb-3">
+<<<<<<< HEAD
                     <div class="card h-100 border-1">
                         <!-- Profile Image -->
                         {% if profile.profile_image %}
@@ -29,6 +30,30 @@
                             <img src="{% static 'images/profile_placeholder.png' %}" class="img-fluid" alt="Profile placeholder">
                         </div>
                         {% endif %}
+=======
+                    <div class="spark-card card h-100 shadow rounded">
+                        {% if request.user.is_authenticated %}
+                        <button class="favourite-profile text-end p-2 border-0 shadow rounded-top" data-profile-item="{{ profile.id }}" aria-label="Like the profile">
+                            <i class="fa-regular fa-heart h5"></i>
+                        </button>
+                        {% endif %}
+
+						{% if profile.profile_image %}
+						<div class="px-1 card-img-top h-100">
+							<img class="img-fluid"
+								 src="{{ profile.profile_image.url }}"
+								 alt="{{ profile.user }}"
+								 onerror="console.error('Failed to load image:', this.src);">
+						</div>
+						{% else %}
+							<div class="text-center p-3">
+								<img src="{% static 'images/profile_placeholder.png' %}"
+									class="img-fluid"
+									alt="Profile placeholder"
+									onerror="console.error('Failed to load placeholder:', this.src);">
+							</div>
+						{% endif %}
+>>>>>>> fd738a82141996e0fdd3fa16818302477ef880d2
 
                         <div class="card-body p-3">
                             <h5 class="card-title mb-2">{{ profile.user.username }}</h5>
