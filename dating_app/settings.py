@@ -14,6 +14,10 @@ from pathlib import Path
 import os
 import sys
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import cloudinary.storage
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -37,7 +41,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
@@ -52,9 +56,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -205,6 +209,7 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_URL = 'https://res.cloudinary.com/{}/'.format(os.getenv('CLOUDINARY_CLOUD_NAME'))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

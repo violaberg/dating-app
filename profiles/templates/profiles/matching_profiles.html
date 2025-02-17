@@ -26,16 +26,16 @@
                         {% endif %}
 
                         {% if profile.profile_image %}
-                        <div class="px-1 card-img-top h-100">
+                        <div class="card-img-top h-100">
                             <img class="img-fluid"
                                  src="{{ profile.profile_image.url }}"
                                  alt="{{ profile.user }}"
                                  onerror="console.error('Failed to load image:', this.src);">
                         </div>
                         {% else %}
-                            <div class="text-center p-3">
+                            <div class="p-4 text-center p-3">
                                 <img src="{% static 'images/profile_placeholder.png' %}"
-                                    class="img-fluid"
+                                    class="placeholder img-fluid rounded-circle mb-3"
                                     alt="Profile placeholder"
                                     onerror="console.error('Failed to load placeholder:', this.src);">
                             </div>
