@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import ChatRoom
-
-
 from django.shortcuts import render
+
 
 def chat(request):
     chatrooms = ChatRoom.objects.all()  # Get all chatrooms

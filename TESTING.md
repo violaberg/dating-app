@@ -24,14 +24,7 @@
 
 All HTML pages were validated using [W3C HTML Validator](https://validator.w3.org/)
 
-|   PAGE                                     |  VALIDATOR SCREENSHOT                                     |   RESULT    |
-|--------------------------------------------|-----------------------------------------------------------|-------------|
-| Home Page                                  |<details><summary>Home</summary><img src="#"></details>| <mark></mark> |
-| Contact Page                               |<details><summary>Contact</summary><img src="#"></details>| <mark></mark> |
-| Contact Success Page                       |<details><summary>Contact Success</summary><img src="#"></details>| <mark></mark> |
-| Sign up Page                               |<details><summary>Sign up</summary><img src="#"></details>| <mark></mark> |
-| Login Page                                 |<details><summary>Login</summary><img src="#"></details>| <mark></mark> |
-| Logout Page                                |<details><summary>Logout</summary><img src="#"></details>| <mark></mark> |
+No errors were found.
 
 ### **CSS**
 
@@ -39,16 +32,18 @@ CSS was validated using [Jigsaw W3](https://jigsaw.w3.org/css-validator/)
 
 |   PAGE                                     |  VALIDATOR SCREENSHOT                                     |   RESULT    |
 |--------------------------------------------|-----------------------------------------------------------|-------------|
-| style.css                                |<details><summary>style.css</summary><img src="#"></details>| <mark>PASS</mark> |
+| style.css                                |<details><summary>style.css</summary><img src="assets/testing/css.png"></details>| <mark>PASS</mark> |
 
 
 ### **Python**
 
 All Python pages were validated using [CI Python Linter](https://pep8ci.herokuapp.com/)
 
-| FILE        | VALIDATOR SCREENSHOT                                                                                                    | RESULT            |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| .py files  | All files don't have any significant errors | <mark>PASS</mark> |
+No errors were found, example: 
+
+| FILE        | VALIDATOR SCREENSHOT| RESULT            |
+| ----------- | ------------------- | ----------------- |
+| chat/models.py | <details><summary>chat/models.py</summary><img src="assets/testing/python.png"></details> | <mark>PASS</mark> |
 
 
 ## **Browser Testing**

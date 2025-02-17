@@ -7,9 +7,9 @@ urlpatterns = [
     path('profile/', views.view_or_edit_profile, name='profile'),
     path('delete-profile/', views.delete_profile, name='delete_profile'),
     path(
-        'admin/delete-profile/<int:user_id>/', 
-        views.delete_user_profile, 
-        name='admin_delete_profile' # Delete user profile - admin only
+        'admin/delete-profile/<int:user_id>/',
+        views.delete_user_profile,
+        name='admin_delete_profile'
     ),
     path('matching/', views.matching_profiles, name='matching_profiles'),
     path(
@@ -17,6 +17,6 @@ urlpatterns = [
         views.like_profile,
         name='like_profile'
     ),
-    path("report/<int:profile_id>/", views.report_profile, name="report_profile"),
+    path("report/<int:profile_id>/",
+         views.report_profile, name="report_profile"),
 ]
-
