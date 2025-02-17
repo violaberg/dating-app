@@ -32,16 +32,18 @@ CSS was validated using [Jigsaw W3](https://jigsaw.w3.org/css-validator/)
 
 |   PAGE                                     |  VALIDATOR SCREENSHOT                                     |   RESULT    |
 |--------------------------------------------|-----------------------------------------------------------|-------------|
-| style.css                                |<details><summary>style.css</summary><img src="#"></details>| <mark>PASS</mark> |
+| style.css                                |<details><summary>style.css</summary><img src="assets/testing/css.png"></details>| <mark>PASS</mark> |
 
 
 ### **Python**
 
 All Python pages were validated using [CI Python Linter](https://pep8ci.herokuapp.com/)
 
-| FILE        | VALIDATOR SCREENSHOT                                                                                                    | RESULT            |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| .py files  | All files don't have any significant errors | <mark>PASS</mark> |
+No errors were found, example: 
+
+| FILE        | VALIDATOR SCREENSHOT| RESULT            |
+| ----------- | ------------------- | ----------------- |
+| chat/models.py | <details><summary>chat/models.py</summary><img src="assets/testing/python.png"></details> | <mark>PASS</mark> |
 
 
 ## **Browser Testing**
