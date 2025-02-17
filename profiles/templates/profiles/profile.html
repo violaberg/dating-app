@@ -72,12 +72,12 @@
         <div class="col-md-6 col-lg-4">
             <div class="card mx-auto shadow p-4">
                 <div class="text-center">
-                    {% if profile.profile_image and profile.profile_image.url != "/media/profile_pics/default.jpg" %}
+                    {% if profile.profile_image %}
                     <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3"
                         alt="Profile Picture">
                     {% else %}
                     <img src="{% static 'images/profile_placeholder.png' %}"
-                        class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
+                        class="placeholder img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
                     {% endif %}
                 </div>
                 <h2 class="text-center">{{ profile.user.username }}</h2>

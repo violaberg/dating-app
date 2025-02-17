@@ -249,7 +249,17 @@ background: linear-gradient(180deg, rgba(250, 156, 161, 1) 4%, rgba(251, 219, 21
 }
 
 .placeholder {
-  filter: sepia(85%);
+  filter: sepia(85%)!important;
+}
+
+.report-profile {
+  color: var(--red);
+  font-weight: 500;
+}
+
+.report-profile:hover {
+  color: var(--light-burgundy);
+  transform: scale(1.1);
 }
 
 /* Contact Page */

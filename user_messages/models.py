@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class MessageRequest(models.Model):
     sender = models.ForeignKey(User, related_name='sent_requests', on_delete=models.CASCADE)
     receiver = models.ForeignKey(User, related_name='received_requests', on_delete=models.CASCADE)
