@@ -1,7 +1,12 @@
+from django.shortcuts import render, redirect
+from .models import ChatRoom
+
+
 from django.shortcuts import render
 
 def chat(request):
-    return render(request, "chat/chat.html")
+    chatrooms = ChatRoom.objects.all()  # Get all chatrooms
+    return render(request, "chat/chat.html", {'chatrooms': chatrooms})
 
 
 def chatroom(request, room_name):
