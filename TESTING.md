@@ -24,14 +24,7 @@
 
 All HTML pages were validated using [W3C HTML Validator](https://validator.w3.org/)
 
-|   PAGE                                     |  VALIDATOR SCREENSHOT                                     |   RESULT    |
-|--------------------------------------------|-----------------------------------------------------------|-------------|
-| Home Page                                  |<details><summary>Home</summary><img src="#"></details>| <mark></mark> |
-| Contact Page                               |<details><summary>Contact</summary><img src="#"></details>| <mark></mark> |
-| Contact Success Page                       |<details><summary>Contact Success</summary><img src="#"></details>| <mark></mark> |
-| Sign up Page                               |<details><summary>Sign up</summary><img src="#"></details>| <mark></mark> |
-| Login Page                                 |<details><summary>Login</summary><img src="#"></details>| <mark></mark> |
-| Logout Page                                |<details><summary>Logout</summary><img src="#"></details>| <mark></mark> |
+No errors were found.
 
 ### **CSS**
 
