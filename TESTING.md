@@ -124,16 +124,16 @@ The website was tested on various devices using Chrome DevTools and real-life de
 
 | Element            | Action      | Expected Result                          | Pass/Fail         |
 | ------------------ | ----------- | ---------------------------------------- | ----------------- |
-| Contact form | Display | Allow user to contact admin by submitting form | <mark></mark> |
-| Submit Button | Click | Submit contact form | <mark></mark> |
-| Submit Button | Hover/Focus | Change  Background colour | <mark></mark> |
+| Contact form | Display | Allow user to contact admin by submitting form | <mark>PASS</mark> |
+| Submit Button | Click | Submit contact form | <mark>PASS</mark> |
+| Submit Button | Hover/Focus | Change  Background colour | <mark>PASS</mark> |
 
 ### Contact Success Page
 
 | Element            | Action      | Expected Result                          | Pass/Fail         |
 | ------------------ | ----------- | ---------------------------------------- | ----------------- |
-| Back to Home Page Button | Click | Bring back to home page | <mark></mark> |
-| Submit Button | Hover/Focus | Change  Background colour | <mark></mark> |
+| Back to Home Page Button | Click | Bring back to home page | <mark>PASS</mark> |
+| Submit Button | Hover/Focus | Change  Background colour | <mark>PASS</mark> |
 
 ### Sign Up Page
 
