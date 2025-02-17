@@ -7,11 +7,12 @@
         <div class="col-md-10 col-lg-8 mx-auto">
             <h1 class="text-center">What chat room would you like to enter?</h1>
             <select id="room-name-input" name="room_name" class="py-2 w-100 rounded shadow">
-            {% for chatroom in chatrooms %}
-                <option value="{{ chatroom.name }}">{{ chatroom.friendly_name }}</option>
-            {% empty %}
-                <option disabled>No chatrooms available</option>
-            {% endfor %}
+                <option value="" disabled selected>-- Select a chat room --</option>
+                {% for chatroom in chatrooms %}
+                    <option value="{{ chatroom.name }}">{{ chatroom.friendly_name }}</option>
+                {% empty %}
+                    <option disabled>No chatrooms available</option>
+                {% endfor %}
             </select>
         </div>
     </div>
@@ -19,15 +20,12 @@
 
 <script>
     document.querySelector('#room-name-input').focus();
-    document.querySelector('#room-name-input').onkeyup = function(e) {
-        if (e.key === 'Enter') {  // enter, return
-            document.querySelector('#room-name-submit').click();
+    document.querySelector('#room-name-input').onchange = function(e) {
+        roomName = document.querySelector('#room-name-input').value;
+        console.log('Selected room: ', roomName); 
+        if (roomName) {
+            window.location.pathname = '/chat/' + roomName + '/';
         }
-    };
-
-    document.querySelector('#room-name-submit').onclick = function(e) {
-        var roomName = document.querySelector('#room-name-input').value;
-        window.location.pathname = '/chat/' + roomName + '/';
     };
 </script>
 {% endblock %}
