@@ -8,7 +8,6 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/asgi/
 """
 
 import os
-import sys
 
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
@@ -16,10 +15,6 @@ from channels.security.websocket import AllowedHostsOriginValidator
 from django.core.asgi import get_asgi_application
 from chat.routing import websocket_urlpatterns
 
-if 'daphne' in sys.argv[0].lower():
-    print("DEBUG Daphne is running.")
-else:
-    print("DEBUG Daphne is NOT running, possibly using gunicorn or another server.")
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dating_app.settings')
 
