@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container mt-4">
-        <h2>Notifications</h2>
-        <ul class="list-group">
+    <div class="container mt-4 text-center">
+        <h2 class="mb-4">Notifications</h2>
+        <ul class="list-group mb-5"> <!-- Added mb-5 for extra space -->
             {% for notification in notifications %}
-                <li class="list-group-item">
-                    {{ notification.message }} - <small>{{ notification.created_at }}</small>
+                <li class="list-group-item text-center">
+                    {{ notification.message }} <br>
+                    <small class="text-muted">{{ notification.created_at }}</small>
                 </li>
             {% empty %}
-                <li class="list-group-item">No new notifications</li>
+                <li class="list-group-item text-center text-muted">No new notifications</li>
             {% endfor %}
         </ul>
     </div>
 {% endblock %}
+
+

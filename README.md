@@ -164,7 +164,10 @@ Used for hover states and secondary elements.<br>
 Adds a soft, romantic touch to features.<br>
 
 ***Sea Salt (#fafafa)***<br>
-Clean, neutral background color ensuring content stands out
+Used for content areas requiring high brightness and clarity
+
+***Cool Ivory (##F5F5EE)***<br>
+Main background color, providing a slighty warmer, inviting atmosphere while being easier on the eyes
 
 ![Color palette](assets/colors/sparksync.png)
 
@@ -233,7 +236,6 @@ A romantic, script-style font used for logos and special headings. It adds an el
 
 ## **Credits**
 - [Floating Love Heart Effect](https://codepen.io/1AHV/pen/oPvwQw)
-- [Pulsing Hearts](https://codepen.io/puresick1/pen/popjyG)
 - [Coolors color palette generator](https://coolors.co/)
 - [Background pattern](https://devsnap.me/css-background-patterns?)
 - [Hero Image](https://unsplash.com/photos/person-holding-fire-cracker-shallow-focus-photography-PAykYb-8Er8)

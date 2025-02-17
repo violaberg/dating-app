@@ -2,30 +2,31 @@
 {% load static %}
 {% block content %}
 {% if messages %}
-    <div class="container mt-3">
-        {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
+<div class="container mt-3">
+    {% for message in messages %}
+    <div id="profile-message-box" class="alert {{ message.tags }} alert-dismissible fade show rounded shadow"
+        role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    {% endfor %}
+</div>
 {% endif %}
 <div class="container mt-5">
     <h1 class="text-center">My Profile</h1>
 
     {% if new_user or not profile.bio %}
-        <div class="alert alert-info text-center">
-            <p>You haven't set up your profile yet. Please fill in your details below.</p>
-        </div>
+    <div class="profile-message-box alert alert-info text-center rounded shadow">
+        <p>You haven't set up your profile yet. Please fill in your details below.</p>
+    </div>
     {% elif edit_mode %}
-        <div class="alert alert-info text-center">
-            <p>Edit your details below.</p>
-        </div>
+    <div class="profile-message-box alert alert-info text-center rounded shadow">
+        <p>Edit your details below.</p>
+    </div>
     {% endif %}
 
     {% if new_user or not profile.bio or edit_mode %}
-    <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+    <div class="card shadow p-4 mx-auto my-4" style="max-width: 500px;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
@@ -62,12 +63,7 @@
                     rows="2">{{ form.interests.value }}</textarea>
             </div>
 
-            <div class="mb-3">
-                <label for="id_relationship_goal" class="form-label">Looking For</label>
-                {{ form.relationship_goal }}
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Save Profile</button>
+            <button type="submit" class="btn btn-pink w-100">Save Profile</button>
         </form>
     </div>
 
@@ -77,9 +73,11 @@
             <div class="card mx-auto shadow p-4">
                 <div class="text-center">
                     {% if profile.profile_image and profile.profile_image.url != "/media/profile_pics/default.jpg" %}
-                        <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Profile Picture">
+                    <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3"
+                        alt="Profile Picture">
                     {% else %}
-                        <img src="{% static 'images/profile_placeholder.png' %}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
+                    <img src="{% static 'images/profile_placeholder.png' %}"
+                        class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
                     {% endif %}
                 </div>
                 <h2 class="text-center">{{ profile.user.username }}</h2>
@@ -90,10 +88,28 @@
                     <li class="list-group-item"><strong>Age:</strong> {{ profile.age }}</li>
                     <li class="list-group-item"><strong>Location:</strong> {{ profile.location }}</li>
                     <li class="list-group-item"><strong>Interests:</strong> {{ profile.interests }}</li>
-                    <li class="list-group-item"><strong>Looking for:</strong> {{ profile.get_relationship_goal_display }}</li>
-                    <li class="list-group-item"><strong>Age Preference:</strong> {{ profile.age_preference }}</li>
-                    <li class="list-group-item"><strong>Spark Type:</strong> {{ profile.spark_type }}</li>
-                    <li class="list-group-item"><strong>Gender Preference:</strong> {{ profile.gender_preference }}</li>
+
+                    {% if profile.spark_type %}
+                    <li class="list-group-item"><strong>Looking for:</strong> {{ profile.spark_type.text }}</li>
+                    {% endif %}
+
+                    {% if profile.gender_preferences.exists %}
+                    <li class="list-group-item">
+                        <strong>Interested in:</strong>
+                        {% for pref in profile.gender_preferences.all %}
+                        {{ pref.text }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </li>
+                    {% endif %}
+
+                    {% if profile.age_preferences.exists %}
+                    <li class="list-group-item">
+                        <strong>Age preferences:</strong>
+                        {% for pref in profile.age_preferences.all %}
+                        {{ pref.text }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </li>
+                    {% endif %}
                 </ul>
 
                 <div class="text-center mt-3">
@@ -131,10 +147,10 @@
                                     placeholder="Type DELETE here">
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-pink" data-bs-dismiss="modal">Cancel</button>
                                 <form method="POST" action="{% url 'profiles:delete_profile' %}" id="deleteAccountForm">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger" id="confirmDeleteBtn" disabled>Delete
+                                    <button type="submit" class="btn btn-red" id="confirmDeleteBtn" disabled>Delete
                                         Account</button>
                                 </form>
                             </div>
@@ -149,8 +165,16 @@
 </div>
 
 <script>
-    document.getElementById('deleteConfirmation').addEventListener('input', function() {
-        document.getElementById('confirmDeleteBtn').disabled = this.value !== 'DELETE';
+    document.addEventListener("DOMContentLoaded", function () {
+        var deleteInput = document.getElementById('deleteConfirmation');
+        var confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+
+        if (deleteInput && confirmDeleteBtn) {
+            deleteInput.addEventListener('input', function () {
+                confirmDeleteBtn.disabled = this.value !== 'DELETE';
+            });
+        }
     });
 </script>
+
 {% endblock %}
