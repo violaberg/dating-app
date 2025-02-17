@@ -62,9 +62,11 @@
                             
                             <!-- Report Profile Button -->
                             {% if request.user.is_authenticated and request.user != profile.user %}
-                            <button class="btn btn-danger report-profile mt-2" data-profile-id="{{ profile.id }}" data-bs-toggle="modal" data-bs-target="#reportModal">
+                            <div class="text-center">
+                            <a href="#" class="report-profile mt-2" data-profile-id="{{ profile.id }}" data-bs-toggle="modal" data-bs-target="#reportModal">
                                 Report Profile
-                            </button>
+                            </a>
+                            </div>
                             {% endif %}
                         </div>
                         <!-- Send Message Request Button -->
@@ -98,7 +100,7 @@
                     <label for="reportReason" class="form-label">Reason for reporting:</label>
                     <textarea class="form-control" id="reportReason" name="reason" rows="3" required></textarea>
                     <div class="mt-3 text-end">
-                        <button type="submit" class="btn btn-danger">Submit Report</button>
+                        <button type="submit" class="btn btn-red">Submit Report</button>
                     </div>
                 </form>
             </div>

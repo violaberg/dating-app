@@ -252,6 +252,16 @@ background: linear-gradient(180deg, rgba(250, 156, 161, 1) 4%, rgba(251, 219, 21
   filter: sepia(85%);
 }
 
+.report-profile {
+  color: var(--red);
+  font-weight: 500;
+}
+
+.report-profile:hover {
+  color: var(--light-burgundy);
+  transform: scale(1.1);
+}
+
 /* Contact Page */
 input, textarea {
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
