@@ -102,14 +102,25 @@ WSGI_APPLICATION = 'dating_app.wsgi.application'
 
 ASGI_APPLICATION = 'dating_app.asgi.application'
 
+REDIS_URL = os.getenv("REDISCLOUD_URL", "redis://localhost:6379")
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [REDIS_URL],
         },
     },
 }
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://sparksync-test-baedaeaf485c.herokuapp.com',
+    'wss://sparksync-test-baedaeaf485c.herokuapp.com',
+]
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
