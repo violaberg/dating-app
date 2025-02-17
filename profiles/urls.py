@@ -17,5 +17,6 @@ urlpatterns = [
         views.like_profile,
         name='like_profile'
     ),
+    path("report/<int:profile_id>/", views.report_profile, name="report_profile"),
 ]
 

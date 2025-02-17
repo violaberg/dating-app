@@ -1,17 +1,18 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
 import json
 from django.http import JsonResponse
 
-from .models import Profile
+from .models import Profile, Report
 from .forms import ProfileForm
 from django.contrib.auth import logout
 from django.contrib import messages
 #from notifications.signals import notify
 from django.contrib.auth.models import User
 from notificationapp.models import Notification
+from twilio.rest import Client
 
 
 @login_required
@@ -188,6 +189,49 @@ def like_profile(request, profile_id):
             )
 
     return JsonResponse({"success": False, "message": "Invalid request"}, status=400)
+
+
+@login_required
+def report_profile(request, profile_id):
+    """ Allows users to report a profile via SMS to the admin """
+    reported_profile = get_object_or_404(Profile, id=profile_id)
+    reported_user = reported_profile.user
+
+    if request.method == "POST":
+        reason = request.POST.get("reason", "").strip()
+        if reason:
+            # Create report entry
+            Report.objects.create(
+                reporter=request.user,
+                reported_user=reported_user,
+                reason=reason
+            )
+
+            # Send SMS notification to admin
+            client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+            sms_body = (
+                f"🚨 Profile Report Alert!\n"
+                f"User {request.user.username} has reported {reported_user.username}.\n"
+                f"Reason: {reason}"
+            )
+
+            try:
+                message = client.messages.create(
+                    body=sms_body,
+                    from_=settings.TWILIO_PHONE_NUMBER,
+                    to=settings.ADMIN_PHONE_NUMBER
+                )
+                print(f"SMS Sent: {message.sid}")
+                messages.success(request, "Your report has been submitted successfully.")
+            except Exception as e:
+                messages.error(request, f"Failed to send SMS: {e}")
+
+            return redirect("profiles:matching_profiles")
+
+        messages.error(request, "Please provide a reason for reporting.")
+
+    return render(request, "profiles/report_profile.html", {"reported_profile": reported_profile})
+
 
 
 
