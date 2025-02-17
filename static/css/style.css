@@ -121,7 +121,7 @@ h3,
 
 /* Team Page */
 .team-card {
-  border: 1px solid var(--red);
+  border: 1px solid var(--dark-burgundy);
 }
 
 .team-card:hover {
@@ -137,39 +137,20 @@ h3,
   transform: scale(1.03);
 }
 
+.team-p {
+  font-weight: 500;
+}
+
+.phrase {
+  color: var(--red);
+  font-family: var(--font-great-vibes);
+}
+
 .wrapper {
   position: absolute;
   margin-left: 10px;
   margin-top: 10px;
   animation: pulse 1s infinite;
-}
-
-.pulsingheart {
-  position: relative;
-  width: 60px;
-  height: 50px;
-}
-
-.pulsingheart:before,
-.pulsingheart:after {
-  position: absolute;
-  content: "";
-  left: 50px;
-  top: 0;
-  width: 50px;
-  height: 80px;
-  background: var(--light-burgundy);
-  border-radius: 50px 50px 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-  animation: pulsecolor 1s infinite;
-}
-
-.pulsingheart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-  animation: pulsecolor 1s infinite;
 }
 
 @keyframes pulse {
@@ -185,10 +166,8 @@ h3,
 }
 
 .logo {
-  width: 60px;
-  /* Increase logo size */
   height: auto;
-  /* Keep aspect ratio */
+  width: 60px;
 }
 
 .text-glow {
@@ -243,6 +222,34 @@ strong {
   right: 1rem;
   top: 7rem;
   z-index: 1000;
+}
+
+/* Sparks Page */
+.spark-card {
+  border: 1px solid var(--light-burgundy)!important;
+}
+
+.sparks-span {
+  color: var(--light-burgundy);
+  font-weight: 600;
+}
+
+.username {
+  color: var(--red);
+  font-family: var(--font-great-vibes);
+}
+
+.fa-heart {
+  color: var(--red);
+}
+
+.favourite-profile {
+background: rgb(250, 156, 161);
+background: linear-gradient(180deg, rgba(250, 156, 161, 1) 4%, rgba(251, 219, 218, 1) 32%, rgba(245, 245, 238, 1) 71%);
+}
+
+.placeholder {
+  filter: sepia(85%);
 }
 
 /* Contact Page */

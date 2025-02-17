@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from questionnaire.models import Choice
 
+
 class Profile(models.Model):
     GENDER_CHOICES = [
         ('male', 'Male'),

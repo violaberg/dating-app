@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+from django.conf import settings
 import json
 from django.http import JsonResponse
 
@@ -10,6 +12,20 @@ from django.contrib import messages
 #from notifications.signals import notify
 from django.contrib.auth.models import User
 from notificationapp.models import Notification
+
+
+@login_required
+@staff_member_required
+def delete_user_profile(request, user_id):
+    """ Allows admin to delete a user profile and associated user account """
+    user = get_object_or_404(User, id=user_id)
+
+    if request.method == 'POST':
+        user.delete()
+        messages.success(request, f'Profile for {user.username} has been deleted.')
+        return redirect('admin:index')
+
+    return render(request, 'profiles/confirm_delete.html', {'user': user})
 
 
 @login_required
@@ -69,6 +85,13 @@ def matching_profiles(request):
     user_profile = request.user.profile
     profiles = Profile.objects.exclude(user=request.user)
 
+    for profile in profiles:
+        print(f"Profile {profile.user.username}:")
+        print(f"- Has image: {bool(profile.profile_image)}")
+        print(f"- Image URL: {profile.profile_image.url if profile.profile_image else 'No image'}")
+        print(f"- Image path: {profile.profile_image.path if profile.profile_image else 'No path'}")
+
+
     if user_profile.gender_preferences.exists():
         gender_preferences = user_profile.gender_preferences.values_list('text', flat=True)
         profiles = profiles.filter(gender__in=[
@@ -109,7 +132,8 @@ def matching_profiles(request):
         'profiles/matching_profiles.html',
         {
             'profiles': profiles,
-            'user_profile': user_profile
+            'user_profile': user_profile,
+            'MEDIA_URL': settings.MEDIA_URL,
         }
     )
 
@@ -125,7 +149,7 @@ def like_profile(request, profile_id):
             recipient_profile = Profile.objects.get(id=profile_id)
             recipient = recipient_profile.user
 
-            # 🚫 Prevent users from liking their own profile
+            # Prevent users from liking their own profile
             if sender == recipient:
                 return JsonResponse(
                     {"success": False, "message": "You cannot like your own profile!"},
@@ -138,7 +162,7 @@ def like_profile(request, profile_id):
                 if liked else f"{sender.username} unliked your profile 💔"
             )
 
-            # ✅ Create a notification only when the profile is liked
+            # Create a notification only when the profile is liked
             if liked:
                 Notification.objects.create(
                     recipient=recipient,

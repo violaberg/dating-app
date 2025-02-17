@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid pb-4">
     <div class="row">
         <div class="col text-center mt-4 mb-3">
             <h1>Your Matches</h1>
@@ -29,37 +29,45 @@
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4">
                 {% for profile in profiles %}
                 <div class="col mb-3">
-                    <div class="card h-100 border-1">
+                    <div class="spark-card card h-100 shadow rounded">
                         {% if request.user.is_authenticated %}
-                        <button class="favourite-profile text-end pe-1 pt-1" data-profile-item="{{ profile.id }}" aria-label="Like the profile">
+                        <button class="favourite-profile text-end p-2 border-0 shadow rounded-top" data-profile-item="{{ profile.id }}" aria-label="Like the profile">
                             <i class="fa-regular fa-heart h5"></i>
                         </button>
                         {% endif %}
 
-                        <div class="text-center">
-                            {% if profile.profile_image and profile.profile_image.url != "/media/profile_pics/default.jpg" %}
-                                <img src="{{ profile.profile_image.url }}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Profile Picture">
-                            {% else %}
-                                <img src="{% static 'images/profile_placeholder.png' %}" class="img-fluid rounded-circle w-50 w-md-25 mb-3" alt="Default Profile Picture">
-                            {% endif %}
-                        </div>
+						{% if profile.profile_image %}
+						<div class="px-1 card-img-top h-100">
+							<img class="img-fluid"
+								 src="{{ profile.profile_image.url }}"
+								 alt="{{ profile.user }}"
+								 onerror="console.error('Failed to load image:', this.src);">
+						</div>
+						{% else %}
+							<div class="text-center p-3">
+								<img src="{% static 'images/profile_placeholder.png' %}"
+									class="img-fluid"
+									alt="Profile placeholder"
+									onerror="console.error('Failed to load placeholder:', this.src);">
+							</div>
+						{% endif %}
 
                         <div class="card-body p-3">
-                            <h5 class="card-title mb-2">{{ profile.user.username }}</h5>
+                            <h5 class="username fs-3 text-center card-title my-2">{{ profile.user.username }}</h5>
                             <p class="card-text mb-1">
-                                <small>Age: {{ profile.age }}</small>
+                                <small><span class="sparks-span fs-6">Age:</span> {{ profile.age }}</small>
                             </p>
                             <p class="card-text mb-1">
-                                <small>Location: {{ profile.location|default:"Not specified" }}</small>
+                                <small><span class="sparks-span fs-6">Location:</span> {{ profile.location|default:"Not specified" }}</small>
                             </p>
                             {% if profile.spark_type %}
                             <p class="card-text mb-1">
-                                <small>Looking for: {{ profile.spark_type.text }}</small>
+                                <small><span class="sparks-span fs-6">Looking for:</span> {{ profile.spark_type.text }}</small>
                             </p>
                             {% endif %}
                             {% if profile.bio %}
                             <p class="card-text">
-                                <small>{{ profile.bio|truncatechars:100 }}</small>
+                                <small><span class="sparks-span fs-6">Bio:</span> {{ profile.bio|truncatechars:100 }}</small>
                             </p>
                             {% endif %}
                         </div>

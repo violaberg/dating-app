@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.contrib import messages
+from django.db.models import Q
 from .models import MessageRequest, Message, BlockedUser, Report, Conversation
 from django.contrib.auth.models import User
 
@@ -46,13 +47,25 @@ def respond_to_message_request(request, request_id, response):
 
 @login_required
 def send_message(request, user_id):
+    """Handles sending messages and ensures conversations are created and updated"""
     receiver = get_object_or_404(User, id=user_id)
+
+    # Ensure a conversation exists
+    conversation, created = Conversation.objects.get_or_create(
+        user1=min(request.user, receiver, key=lambda x: x.id),
+        user2=max(request.user, receiver, key=lambda x: x.id),
+    )
 
     if request.method == "POST":
         content = request.POST.get('content')
         if content:
-            Message.objects.create(sender=request.user, receiver=receiver, content=content)
-            return redirect('messages:get_conversation', user_id=user_id)
+            Message.objects.create(
+                sender=request.user,
+                receiver=receiver,
+                conversation=conversation,  # Associate with the correct conversation
+                content=content
+            )
+        return redirect('messages:get_conversation', user_id=user_id)
 
     return redirect('messages:get_conversation', user_id=user_id)
 
@@ -62,13 +75,13 @@ def get_conversation(request, user_id):
     """Fetches the chat history between two users."""
     other_user = get_object_or_404(User, id=user_id)
 
-    messages = Message.objects.filter(
+    chat_messages = Message.objects.filter(
         sender=request.user, receiver=other_user
     ) | Message.objects.filter(
         sender=other_user, receiver=request.user
     ).order_by('created_at')
 
-    return render(request, 'user_messages/conversation.html', {'messages': messages, 'other_user': other_user})
+    return render(request, 'user_messages/conversation.html', {'chat_messages': chat_messages, 'other_user': other_user})
 
 
 @login_required
@@ -111,9 +124,28 @@ def report_message(request, message_id):
 
 @login_required
 def inbox(request):
-    """Displays the user's active conversations."""
-    conversations = Conversation.objects.filter(user1=request.user) | Conversation.objects.filter(user2=request.user)
-    return render(request, 'user_messages/inbox.html', {'conversations': conversations})
+    """Displays the user's active conversations with the most recent message."""
+    conversations = Conversation.objects.filter(
+        Q(user1=request.user) | Q(user2=request.user)
+    ).distinct()
+
+    inbox_data = []
+    for convo in conversations:
+        # Determine the other user in the conversation
+        other_user = convo.user1 if convo.user2 != request.user else convo.user2
+
+        # Fetch the most recent message
+        last_message = Message.objects.filter(conversation=convo).order_by('-created_at').first()
+
+        inbox_data.append({
+            'other_user': other_user,
+            'last_message': last_message,
+            'conversation_url': f"/messages/conversation/{other_user.id}/"  # Ensure correct URL
+        })
+
+    return render(request, 'user_messages/inbox.html', {'inbox_data': inbox_data})
+
+
 
 
 @login_required
