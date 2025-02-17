@@ -71,6 +71,10 @@
                             </p>
                             {% endif %}
                         </div>
+                        <!-- Send Message Request Button -->
+                            <button class="btn btn-pink send-message-request w-100 rounded-top-0" data-user-id="{{ profile.user.id }}">
+                                Send Message Request
+                            </button>
                     </div>
                 </div>
                 {% empty %}
@@ -132,6 +136,30 @@
         );
     });
 
+</script>
+<!-- JavaScript for AJAX requests -->
+<script>
+    $(document).ready(function() {
+        $(".send-message-request").click(function() {
+            let userId = $(this).data("user-id");
+            let csrftoken = Cookies.get("csrftoken");
+            let button = $(this);
+
+            $.ajax({
+                url: `/messages/send-request/${userId}/`,
+                type: "POST",
+                headers: { "X-CSRFToken": csrftoken },
+                success: function(response) {
+                    alert("Message request sent successfully!");
+                    button.prop("disabled", true).text("Request Sent");
+                },
+                error: function(xhr) {
+                    let errorMsg = xhr.responseJSON ? xhr.responseJSON.error : "Error sending request.";
+                    alert(errorMsg);
+                }
+            });
+        });
+    });
 </script>
 
 {% endblock %}
