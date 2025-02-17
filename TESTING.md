@@ -41,11 +41,6 @@ CSS was validated using [Jigsaw W3](https://jigsaw.w3.org/css-validator/)
 |--------------------------------------------|-----------------------------------------------------------|-------------|
 | style.css                                |<details><summary>style.css</summary><img src="#"></details>| <mark>PASS</mark> |
 
-### **JavaScript**
-
-|   FILE                                     |  VALIDATOR SCREENSHOT                                     |   RESULT    |
-|--------------------------------------------|-----------------------------------------------------------|-------------|
-| script.js                                 |<details><summary>script.js</summary><img src="#"></details>| <mark></mark> |
 
 ### **Python**
 
@@ -53,7 +48,7 @@ All Python pages were validated using [CI Python Linter](https://pep8ci.herokuap
 
 | FILE        | VALIDATOR SCREENSHOT                                                                                                    | RESULT            |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| home/models.py   | <details><summary>Home models</summary><img src="#"></details> | <mark></mark> |
+| .py files  | All files don't have any significant errors | <mark>PASS</mark> |
 
 
 ## **Browser Testing**
@@ -171,8 +166,8 @@ The website was tested on various devices using Chrome DevTools and real-life de
 
 | Element       | Action         | Expected Result                                | Pass/Fail         |
 | ------------- | -------------- | ---------------------------------------------- | ----------------- |
-| Back to Home Page Button   | Click    | Bring user back to home page     | <mark></mark> |
-| Back to Home Page Button   | Hover/Focus    |    | <mark></mark> |
+| Back to Home Page Button   | Click    | Bring user back to home page     | <mark>PASS</mark> |
+| Back to Home Page Button   | Hover/Focus    |    | <mark>PASS</mark> |
 
 
 ## **Responsiveness**
