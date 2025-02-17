@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
+from django.conf import settings
 import json
 from django.http import JsonResponse
 
@@ -84,6 +85,13 @@ def matching_profiles(request):
     user_profile = request.user.profile
     profiles = Profile.objects.exclude(user=request.user)
 
+    for profile in profiles:
+        print(f"Profile {profile.user.username}:")
+        print(f"- Has image: {bool(profile.profile_image)}")
+        print(f"- Image URL: {profile.profile_image.url if profile.profile_image else 'No image'}")
+        print(f"- Image path: {profile.profile_image.path if profile.profile_image else 'No path'}")
+
+
     if user_profile.gender_preferences.exists():
         gender_preferences = user_profile.gender_preferences.values_list('text', flat=True)
         profiles = profiles.filter(gender__in=[
@@ -124,7 +132,8 @@ def matching_profiles(request):
         'profiles/matching_profiles.html',
         {
             'profiles': profiles,
-            'user_profile': user_profile
+            'user_profile': user_profile,
+            'MEDIA_URL': settings.MEDIA_URL,
         }
     )
 
