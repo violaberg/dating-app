@@ -18,6 +18,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
+ADMIN_PHONE_NUMBER = os.getenv("ADMIN_PHONE_NUMBER")
+
 SITE_ID = 1
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +37,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
