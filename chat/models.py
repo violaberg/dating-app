@@ -6,5 +6,5 @@ class ChatRoom(models.Model):
     friendly_name = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
-        return self.friendly_name or self.name
+        return f"{self.name} ({self.friendly_name})"
     
