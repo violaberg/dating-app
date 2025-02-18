@@ -1,4 +1,4 @@
-![Image]()
+![Image](static/images/sparksync.png)
 
 # Love.exe – Coding Connections in the Digital Age 🌈!
 

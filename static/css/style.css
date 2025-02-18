@@ -38,7 +38,8 @@ background:
 }
 
 body {
-  background-color: #F5F5EE;
+  background: rgb(245, 245, 238);
+  background: radial-gradient(circle, rgb(245, 245, 238) 15%, rgba(248, 233, 228, 1) 80%);
   color: var(--charcoal);
   font-family: var(--font-montserrat);
 }
