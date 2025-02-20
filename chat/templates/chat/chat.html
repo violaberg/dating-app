@@ -3,7 +3,8 @@
 
 {% block content %}
 <div class="container py-4">
-    <div class="row">
+    <div class="row text-center py-2"">
+        {% if user.is_authenticated %}
         <div class="col-md-10 col-lg-8 mx-auto">
             <h1 class="text-center">What chat room would you like to enter?</h1>
             <select id="room-name-input" name="room_name" class="py-2 w-100 rounded shadow">
@@ -15,6 +16,16 @@
                 {% endfor %}
             </select>
         </div>
+        {% else %}
+        <div id="not_allowed" class="col-md-10 col-sm-12 col-xl-10 mx-auto"></div>
+            <h1 class="text-center pt-2">Oops! Page Not Found.</h1>
+            <p class="text-center px-3">You must be logged in to access the chat service!</p>
+            <a href="{% url 'home' %}" class="btn btn-pink rounded mt-3 p-2"
+                aria-label="Brings you back to Home Page">Back to Home
+                page
+            </a>
+        </div>
+        {% endif %}
     </div>
 </div>
 

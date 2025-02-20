@@ -1,6 +1,5 @@
 
 import json
-
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 
@@ -23,9 +22,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json["message"]
 
+        username = text_data_json.get('username', 'Anonymous')
+
+        formatted_message = f"{username}: {message}"
+
         # Send message to room group
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "chat.message", "message": message}
+            self.room_group_name, {"type": "chat.message", "message": formatted_message}
         )
 
     # Receive message from roomASGI_APPLICATION = 'your_project_name.asgi.application' group
