@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import ChatRoom
 
 
@@ -16,7 +16,6 @@ def chatroom(request, room_name):
     if not chatroom_exists:
         return render(request, "chat/chatroom_not_found.html", {"room_name": room_name})
     
-    print(f"DEBUG: Rendering chatroom.html with room_name={room_name} and friendly_name={friendly_name}")
     return render(request, "chat/chatroom.html", {
         "room_name": room_name,
         "friendly_name": chatroom.friendly_name,
