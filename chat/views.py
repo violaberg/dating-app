@@ -10,7 +10,6 @@ def chat(request):
 def chatroom(request, room_name):
     available_rooms = ChatRoom.objects.values_list('name', flat=True)
     chatroom = ChatRoom.objects.filter(name=room_name).first()
-    friendly_name = chatroom.friendly_name
 
     chatroom_exists = room_name in available_rooms
 
@@ -20,6 +19,6 @@ def chatroom(request, room_name):
     print(f"DEBUG: Rendering chatroom.html with room_name={room_name} and friendly_name={friendly_name}")
     return render(request, "chat/chatroom.html", {
         "room_name": room_name,
-        "friendly_name": friendly_name,
+        "friendly_name": chatroom.friendly_name,
     })
     
