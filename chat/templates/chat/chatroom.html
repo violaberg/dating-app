@@ -6,7 +6,7 @@
     {% if user.is_authenticated %}
         <div class="row">
             <span id="user-username" style="display:none;">"{{ user.username }}"</span>
-            <h3 class="text-center px-3">You're in the <strong>{{ room_name }}</strong> chatroom</h3>
+            <h3 class="text-center px-3">Hi {{ user.username }}! You're in the <strong>{{ friendly_name }}</strong> chatroom</h3>
             <div class="col-md-10 col-lg-8 mx-auto">
                 <textarea id="chat-log" cols="100" rows="20"></textarea>
                 <input id="chat-message-input" type="text" class="py-2" size="100">
@@ -58,7 +58,8 @@
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': message,
+                'username': username
             }));
             messageInputDom.value = '';
         };
