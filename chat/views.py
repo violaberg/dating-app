@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import ChatRoom
 
-
 def chat(request):
     chatrooms = ChatRoom.objects.all()  # Get all chatrooms
     return render(request, "chat/chat.html", {'chatrooms': chatrooms})
