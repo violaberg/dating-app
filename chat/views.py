@@ -10,4 +10,9 @@ def chat(request):
 
 
 def chatroom(request, room_name):
+    chatroom_exists = ChatRoom.objects.filter(name=room_name).exists()
+    
+    if not chatroom_exists:
+        return render(request, "chat/chatroom_not_found.html", {"room_name": room_name})
+
     return render(request, "chat/chatroom.html", {"room_name": room_name})
