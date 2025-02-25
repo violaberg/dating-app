@@ -4,25 +4,26 @@
 {% block content %}
 <div class="container py-4">
     {% if user.is_authenticated %}
-    <div class="row">
-        <span id="user-username" style="display:none;">"{{ user.username }}"</span>
-        <div class="col-md-10 col-lg-8 mx-auto">
-            <textarea id="chat-log" cols="100" rows="20"></textarea>
-            <input id="chat-message-input" type="text" class="py-2" size="100">
-            <div class="text-center">
-                <input id="chat-message-submit" type="button" class="btn btn-pink mt-4" value="Send">
-                {{ room_name|json_script:"room-name" }}
+        <div class="row">
+            <span id="user-username" style="display:none;">"{{ user.username }}"</span>
+            <h3 class="text-center px-3">Hi {{ user.username }}! You're in the <strong>{{ friendly_name }}</strong> chatroom</h3>
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <textarea id="chat-log" cols="100" rows="20"></textarea>
+                <input id="chat-message-input" type="text" class="py-2" size="100">
+                <div class="text-center">
+                    <input id="chat-message-submit" type="button" class="btn btn-pink mt-4" value="Send">
+                    {{ room_name|json_script:"room-name" }}
+                </div>
             </div>
         </div>
-    </div>
     {% else %}
-    <div id="not_allowed" class="col-md-10 col-sm-12 col-xl-10 mx-auto"></div>
-        <h1 class="text-center pt-2">Oops! Page Not Found.</h1>
-        <p class="text-center px-3">You must be logged in to access the chatrooms!</p>
-        <a href="{% url 'home' %}" class="btn btn-pink rounded mt-3 p-2"
-                aria-label="Brings you back to Home Page">Back to Home page
-        </a>
-    </div>
+        <div id="not_allowed" class="col-md-10 col-sm-12 col-xl-10 mx-auto"></div>
+            <h1 class="text-center pt-2">Oops! Page Not Found.</h1>
+            <p class="text-center px-3">You must be logged in to access the chatrooms!</p>
+            <a href="{% url 'home' %}" class="btn btn-pink rounded mt-3 p-2"
+                    aria-label="Brings you back to Home Page">Back to Home page
+            </a>
+        </div>
     {% endif %}
 </div>
     <script>
@@ -57,7 +58,8 @@
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': message,
+                'username': username
             }));
             messageInputDom.value = '';
         };

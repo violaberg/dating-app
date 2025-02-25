@@ -38,5 +38,12 @@
             window.location.pathname = '/chat/' + roomName + '/';
         }
     };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const chatRoomDropdown = document.getElementById("chat-room-dropdown"); // Adjust the ID to match your dropdown's ID
+        if (chatRoomDropdown) {
+            chatRoomDropdown.selectedIndex = 0; // Resets to the first option
+        }
+    });
 </script>
 {% endblock %}
