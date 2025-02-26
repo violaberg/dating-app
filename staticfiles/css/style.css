@@ -263,6 +263,31 @@ background: linear-gradient(180deg, rgba(250, 156, 161, 1) 4%, rgba(251, 219, 21
   transform: scale(1.1);
 }
 
+/* Chat Page */
+#chat-log {
+  background-color: #FAFAFA;
+  border: 2px solid black;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+.chat-msg {
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.msg-from-user {
+  background-color: #FA9CA1;
+  text-align: right;
+}
+
+.msg-from-other {
+  background-color: #F5F5EE;
+  text-align: left;
+}
+
+
 /* Contact Page */
 input, textarea {
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.15);
