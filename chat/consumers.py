@@ -1,4 +1,3 @@
-
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
@@ -21,7 +20,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json["message"]
-
         username = text_data_json.get('username', 'Anonymous')
 
         formatted_message = f"{username}: {message}"
