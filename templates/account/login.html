@@ -26,13 +26,13 @@
                 </p>
                 {% url 'account_login' as login_url %}
                 <form method="post" action="{% url 'account_login' %}" class="shadow p-3 border rounded">
-                            {% csrf_token %}
-                            {{ form|crispy }}
-                            {{ redirect_field }}
-                            <button type="submit" class="btn btn-pink mt-3" aria-label="Sign in button">
-                                {% trans "Log In" %}
-                            </button>
-                        </form>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    {{ redirect_field }}
+                    <button type="submit" class="btn btn-pink mt-3" aria-label="Sign in button">
+                        {% trans "Log In" %}
+                    </button>
+                </form>
             {% endif %}
             {% if LOGIN_BY_CODE_ENABLED or PASSKEY_LOGIN_ENABLED %}
                 <hr class="mt-4">
